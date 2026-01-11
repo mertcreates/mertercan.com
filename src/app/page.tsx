@@ -41,8 +41,10 @@ export default function Home() {
           <div>
             <h3 className='mb-3'>Tiny Creative Worlds</h3>
             <p>
-              Some characters begin as quiet gestures of care. Over time, they grow into gentle, character-led worlds —
-              like Toffee, Rozi, and Fluffy. They stay close to tenderness, curiosity, and a softer way of making.
+              Some characters begin as quiet gestures of care. Over time, they grow into gentle, character-led systems —
+              evolving visual worlds shaped by continuity, repetition, and observation. Projects like Toffee, Rozi, and
+              Fluffy explore how softness can scale without losing meaning, while staying close to tenderness,
+              curiosity, and a softer way of making.
             </p>
           </div>
         </div>
