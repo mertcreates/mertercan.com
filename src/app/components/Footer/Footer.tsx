@@ -21,11 +21,16 @@ const Footer = () => {
         </a>
 
         <a href='https://x.com/Mert_Ercan' target='_blank' rel='noopener noreferrer'>
-          Twitter
+          X
         </a>
       </div>
 
-      <p className='footer-note mt-4 text-xs!'>made with clarity, curiosity, and a little care</p>
+      <p className='footer-note mt-4 text-xs!'>
+        made with clarity, curiosity, and a little care —{' '}
+        <a href='/life' className='no-underline hover:text-ink/60 transition-colors'>
+          life
+        </a>
+      </p>
     </footer>
   );
 };

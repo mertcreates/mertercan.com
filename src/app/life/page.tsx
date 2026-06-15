@@ -1,0 +1,61 @@
+import type { Metadata } from 'next';
+import Footer from '../components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Life — Mert Ercan',
+  description: 'A quiet record of how this site — and I — grow.',
+  alternates: {
+    canonical: 'https://mertercan.com/life',
+  },
+};
+
+type Entry = {
+  date: string;
+  intro?: string;
+  notes: string[];
+};
+
+const entries: Entry[] = [
+  {
+    date: 'June 2026',
+    intro:
+      'A lot had been building quietly. Projects existed but the site hadn\'t caught up yet. This update was mostly about closing that gap.',
+    notes: [
+      'Added BugJar, Haklısın!, Kombin.dev, Project Canon, and two ESLint plugins to Selected Work — things that had been real for a while.',
+      "The creative characters (Toffee, Rozi, Fluffy) moved into the background. The approach stayed; the names didn't need to.",
+      '"How I Grow" got a second paragraph. It needed more room.',
+      'This page — as a place to remember what was here and what changed.',
+    ],
+  },
+];
+
+export default function Life() {
+  return (
+    <main className='min-h-screen'>
+      <section className='container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
+        <h1 className='mb-3'>Life</h1>
+        <p className='text-ink/50 mt-0! mb-16 text-sm! italic md:mb-20'>
+          A quiet record of how this site — and I — grow.
+        </p>
+
+        <div className='max-w-lg space-y-14 md:space-y-16'>
+          {entries.map((entry) => (
+            <div key={entry.date}>
+              <p className='text-ink/40 mb-4 text-sm! font-medium tracking-wide uppercase'>{entry.date}</p>
+              {entry.intro && <p className='text-ink/60 mb-6 italic'>{entry.intro}</p>}
+              <ul className='space-y-2.5'>
+                {entry.notes.map((note, i) => (
+                  <li key={i} className="before:text-ink/30 text-ink/80 list-none before:mr-3 before:content-['-']">
+                    {note}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
