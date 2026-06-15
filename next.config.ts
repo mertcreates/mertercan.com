@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   output: 'export',
   cleanDistDir: true,
+  reactStrictMode: false,
 };
 
 export default nextConfig;

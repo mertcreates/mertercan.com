@@ -41,8 +41,8 @@ export default function Home() {
           <div>
             <h3 className='mb-3'>Tiny Creative Worlds</h3>
             <p>
-              Some things begin as quiet gestures — a small character, a recurring shape, a feeling that needs a form.
-              I let them grow slowly, without forcing a destination. The continuity matters more than the output.
+              Some things begin as quiet gestures — a small character, a recurring shape, a feeling that needs a form. I
+              let them grow slowly, without forcing a destination. The continuity matters more than the output.
             </p>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function Home() {
                 href='https://bugjar.dev'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-ink no-underline hover:text-ink/70'
+                className='text-ink hover:text-ink/70 no-underline'
               >
                 BugJar
               </a>
@@ -76,7 +76,7 @@ export default function Home() {
                 href='https://haklisin.app'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-ink no-underline hover:text-ink/70'
+                className='text-ink hover:text-ink/70 no-underline'
               >
                 Haklısın!
               </a>
@@ -93,7 +93,7 @@ export default function Home() {
                 href='https://kombin.dev'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-ink no-underline hover:text-ink/70'
+                className='text-ink hover:text-ink/70 no-underline'
               >
                 Kombin.dev
               </a>
@@ -110,7 +110,7 @@ export default function Home() {
                 href='https://github.com/mertcreates/project-canon'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-ink no-underline hover:text-ink/70'
+                className='text-ink hover:text-ink/70 no-underline'
               >
                 Project Canon
               </a>{' '}
@@ -129,7 +129,7 @@ export default function Home() {
                 href='https://npmjs.com/package/@mertcreates/eslint-plugin-next-pages-router'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-ink no-underline hover:text-ink/70'
+                className='text-ink hover:text-ink/70 no-underline'
               >
                 eslint-plugin-next-pages-router
               </a>
@@ -143,14 +143,14 @@ export default function Home() {
                 href='https://npmjs.com/package/@mertcreates/eslint-plugin-mv3'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-ink no-underline hover:text-ink/70'
+                className='text-ink hover:text-ink/70 no-underline'
               >
                 eslint-plugin-mv3
               </a>
             </h3>
             <p>
-              Prevents closure traps in Manifest V3 <code>executeScript</code> calls. The kind of bug that only shows
-              up at runtime — caught statically instead.
+              Prevents closure traps in Manifest V3 <code>executeScript</code> calls. The kind of bug that only shows up
+              at runtime — caught statically instead.
             </p>
           </div>
         </div>

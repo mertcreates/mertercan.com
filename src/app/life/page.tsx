@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
@@ -19,10 +20,10 @@ const entries: Entry[] = [
   {
     date: 'June 2026',
     intro:
-      'A lot had been building quietly. Projects existed but the site hadn\'t caught up yet. This update was mostly about closing that gap.',
+      "A lot had been building quietly. Projects existed but the site hadn't caught up yet. This update was mostly about closing that gap.",
     notes: [
       'Added BugJar, Haklısın!, Kombin.dev, Project Canon, and two ESLint plugins to Selected Work — things that had been real for a while.',
-      "The creative characters (Toffee, Rozi, Fluffy) moved into the background. The approach stayed; the names didn't need to.",
+      'The creative characters (Toffee, Rozi, Fluffy) moved into the background. The approach stayed; the names didn\'t need to.',
       '"How I Grow" got a second paragraph. It needed more room.',
       'This page — as a place to remember what was here and what changed.',
     ],
@@ -33,6 +34,11 @@ export default function Life() {
   return (
     <main className='min-h-screen'>
       <section className='container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
+        <div className='mb-10 md:mb-14'>
+          <Link href='/' className='text-ink/40 hover:text-ink/60 text-sm no-underline transition-colors'>
+            ← home
+          </Link>
+        </div>
         <h1 className='mb-3'>Life</h1>
         <p className='text-ink/50 mt-0! mb-16 text-sm! italic md:mb-20'>
           A quiet record of how this site — and I — grow.

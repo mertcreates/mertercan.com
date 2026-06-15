@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -27,9 +28,9 @@ const Footer = () => {
 
       <p className='footer-note mt-4 text-xs!'>
         made with clarity, curiosity, and a little care —{' '}
-        <a href='/life' className='no-underline hover:text-ink/60 transition-colors'>
+        <Link href='/life' className='hover:text-ink/60 no-underline transition-colors'>
           life
-        </a>
+        </Link>
       </p>
     </footer>
   );

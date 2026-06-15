@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Poppins } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 
 // eslint-disable-next-line new-cap
@@ -41,7 +42,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${poppins.className} antialiased`}>{children}</body>
+      <body className={`${poppins.className} antialiased`}>
+        {children}
+        <Script id='quiet-nod'>
+          {`if (!window._q) { window._q = true; console.log("you found the quiet part.\\n\\nmaybe we care about the same small things.\\n\\nme@mertercan.com"); }`}
+        </Script>
+      </body>
     </html>
   );
 }
