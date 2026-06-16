@@ -1,5 +1,6 @@
 import Footer from './components/Footer';
 import Hero from './components/Hero';
+import Link from 'next/link';
 import Section from './components/Section';
 
 export default function Home() {
@@ -53,105 +54,61 @@ export default function Home() {
       <Section title='Selected Work'>
         <div className='max-w-lg space-y-8 md:space-y-10'>
           <div>
-            <h3 className='mb-3'>
-              <a
-                href='https://bugjar.dev'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-ink hover:text-ink/70 no-underline'
-              >
+            <h3 className='mb-3 flex items-center gap-2'>
+              <Link href='/making/bugjar' className='text-ink hover:text-ink/70 no-underline'>
                 BugJar
-              </a>
+              </Link>
             </h3>
-            <p>
-              A browser extension for structured session capture. It records events as they happen — deterministic,
-              scope-bound, and fully under user control. Built for the moments when reproducing a bug matters more than
-              guessing.
-            </p>
+            <p>A deterministic session envoy. It records exactly what happens, strictly within a defined scope.</p>
           </div>
 
           <div>
-            <h3 className='mb-3'>
-              <a
-                href='https://haklisin.app'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-ink hover:text-ink/70 no-underline'
-              >
+            <h3 className='mb-3 flex items-center gap-2'>
+              <Link href='/making/haklisin' className='text-ink hover:text-ink/70 no-underline'>
                 Haklısın!
-              </a>
+              </Link>
             </h3>
-            <p>
-              A small ritual for the everyday "I told you so" moments. It turns those tiny vindications into something
-              collectible — warm, playful, and surprisingly precise about the absurd business of being right.
-            </p>
+            <p>A small ritual for turning everyday &quot;haklısın&quot; moments into a shared jar of symbolic coins.</p>
           </div>
 
           <div>
-            <h3 className='mb-3'>
-              <a
-                href='https://kombin.dev'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-ink hover:text-ink/70 no-underline'
-              >
+            <h3 className='mb-3 flex items-center gap-2'>
+              <Link href='/making/kombin' className='text-ink hover:text-ink/70 no-underline'>
                 Kombin.dev
-              </a>
-            </h3>
-            <p>
-              A quiet wardrobe analysis tool. It doesn't decide what to wear — it makes the stronger options visible.
-              Calm, technical, and built around the idea that good taste deserves honest feedback.
-            </p>
-          </div>
-
-          <div>
-            <h3 className='mb-3'>
-              <a
-                href='https://github.com/mertcreates/project-canon'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-ink hover:text-ink/70 no-underline'
-              >
-                Project Canon
-              </a>{' '}
+              </Link>
               <span className='text-ink/40 text-sm font-normal'>private</span>
             </h3>
             <p>
-              A private studio system for character-based creative work. It holds memory, proposes ideas, turns approved
-              concepts into visuals, and handles publishing — so the repetitive parts stay quiet and the judgment stays
-              with me.
+              A quiet wardrobe analysis panel. It does not decide what to wear; it makes the stronger options visible.
             </p>
           </div>
 
           <div>
-            <h3 className='mb-3'>
-              <a
-                href='https://npmjs.com/package/@mertcreates/eslint-plugin-next-pages-router'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-ink hover:text-ink/70 no-underline'
-              >
+            <h3 className='mb-3 flex items-center gap-2'>
+              <Link href='/making/project-canon' className='text-ink hover:text-ink/70 no-underline'>
+                Project Canon
+              </Link>
+              <span className='text-ink/40 text-sm font-normal'>private</span>
+            </h3>
+            <p>A private system for keeping character work coherent, movable, and ready to publish.</p>
+          </div>
+
+          <div>
+            <h3 className='mb-3 flex items-center gap-2'>
+              <Link href='/making/eslint-next-pages-router' className='text-ink hover:text-ink/70 no-underline'>
                 eslint-plugin-next-pages-router
-              </a>
+              </Link>
             </h3>
-            <p>Catches broken route references in Next.js Pages Router at lint time, before they reach the browser.</p>
+            <p>An ESLint plugin that catches invalid Pages Router routes before they reach the browser.</p>
           </div>
 
           <div>
-            <h3 className='mb-3'>
-              <a
-                href='https://npmjs.com/package/@mertcreates/eslint-plugin-mv3'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-ink hover:text-ink/70 no-underline'
-              >
+            <h3 className='mb-3 flex items-center gap-2'>
+              <Link href='/making/eslint-mv3' className='text-ink hover:text-ink/70 no-underline'>
                 eslint-plugin-mv3
-              </a>
+              </Link>
             </h3>
-            <p>
-              Prevents closure traps in Manifest V3 <code>executeScript</code> calls. The kind of bug that only shows up
-              at runtime — caught statically instead.
-            </p>
+            <p>An ESLint plugin for catching unsafe Manifest V3 executeScript closures at lint time.</p>
           </div>
         </div>
       </Section>
@@ -161,12 +118,13 @@ export default function Home() {
       <Section title='How I Grow' className='pb-32! md:pb-[200px]!'>
         <div className='max-w-lg space-y-4'>
           <p>
-            I'm shaped by small things — the quiet moments, the subtle shifts, and the lessons that arrive slowly over
-            time. I try to move in ways that feel honest, without rushing what needs space.
+            I&apos;m shaped by small things — the quiet moments, the subtle shifts, and the lessons that arrive slowly
+            over time. I try to move in ways that feel honest, without rushing what needs space.
           </p>
           <p>
-            Most of what I learn comes from staying close to the work — noticing what's breaking, what's missing, what
-            could be gentler. Growth, for me, is less about milestones and more about the quality of attention.
+            Most of what I learn comes from staying close to the work — noticing what&apos;s breaking, what&apos;s
+            missing, what could be gentler. Growth, for me, is less about milestones and more about the quality of
+            attention.
           </p>
           <ul className='text-ink/60 list-none space-y-1.5 md:space-y-2'>
             <li className="before:text-ink/50 before:mr-3 before:content-['-']">I grow where I care</li>

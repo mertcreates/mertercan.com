@@ -45,7 +45,9 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased`}>
         {children}
         <Script id='quiet-nod'>
-          {`if (!window._q) { window._q = true; console.log("you found the quiet part.\\n\\nmaybe we care about the same small things.\\n\\nme@mertercan.com"); }`}
+          {
+            'if (!window._q) { window._q = true; console.log("you found the quiet part.\\n\\nmaybe we care about the same small things.\\n\\nme@mertercan.com"); }'
+          }
         </Script>
       </body>
     </html>

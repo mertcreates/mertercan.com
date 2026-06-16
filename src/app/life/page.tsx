@@ -22,7 +22,7 @@ const entries: Entry[] = [
     intro:
       "A lot had been building quietly. Projects existed but the site hadn't caught up yet. This update was mostly about closing that gap.",
     notes: [
-      'Added BugJar, Haklısın!, Kombin.dev, Project Canon, and two ESLint plugins to Selected Work — things that had been real for a while.',
+      'Added BugJar, Haklısın!, Kombin.dev, Project Canon, and two ESLint plugins to Selected Work. Built dedicated /making pages for each, and stripped away the "marketing" voice in favor of a calm, structural record.',
       'The creative characters (Toffee, Rozi, Fluffy) moved into the background. The approach stayed; the names didn\'t need to.',
       '"How I Grow" got a second paragraph. It needed more room.',
       'This page — as a place to remember what was here and what changed.',
@@ -44,7 +44,7 @@ export default function Life() {
           A quiet record of how this site — and I — grow.
         </p>
 
-        <div className='max-w-lg space-y-14 md:space-y-16'>
+        <div className='max-w-[620px] space-y-14 md:space-y-16'>
           {entries.map((entry) => (
             <div key={entry.date}>
               <p className='text-ink/40 mb-4 text-sm! font-medium tracking-wide uppercase'>{entry.date}</p>
