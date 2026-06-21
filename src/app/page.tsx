@@ -65,6 +65,15 @@ export default function Home() {
 
           <div>
             <h3 className='mb-3 flex items-center gap-2'>
+              <Link href='/making/steam-library-manager' className='text-ink hover:text-ink/70 no-underline'>
+                Steam Library Manager
+              </Link>
+            </h3>
+            <p>A game library utility born from one friend&apos;s repeated trips between home and university.</p>
+          </div>
+
+          <div>
+            <h3 className='mb-3 flex items-center gap-2'>
               <Link href='/making/haklisin' className='text-ink hover:text-ink/70 no-underline'>
                 Haklısın!
               </Link>
@@ -101,15 +110,6 @@ export default function Home() {
               </Link>
             </h3>
             <p>An ESLint plugin that catches invalid Pages Router routes before they reach the browser.</p>
-          </div>
-
-          <div>
-            <h3 className='mb-3 flex items-center gap-2'>
-              <Link href='/making/eslint-mv3' className='text-ink hover:text-ink/70 no-underline'>
-                eslint-plugin-mv3
-              </Link>
-            </h3>
-            <p>An ESLint plugin for catching unsafe Manifest V3 executeScript closures at lint time.</p>
           </div>
         </div>
       </Section>
