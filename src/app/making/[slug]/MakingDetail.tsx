@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import StoryText from '@/app/components/StoryText';
 import type { Project } from '@/data/projects';
 
 type Props = {
@@ -31,14 +32,7 @@ export default function MakingDetail({ project }: Props) {
         {project.status}
       </p>
 
-      {/* Story */}
-      <div className='mb-14 max-w-[620px] space-y-5 md:mb-16'>
-        {project.story.map((paragraph, i) => (
-          <p key={i} className='text-ink/85'>
-            {paragraph}
-          </p>
-        ))}
-      </div>
+      <StoryText paragraphs={project.story} />
 
       {/* Visual frame — optional */}
       {project.visual && (

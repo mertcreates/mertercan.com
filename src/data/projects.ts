@@ -122,9 +122,11 @@ export const projects = [
     group: 'small',
     kind: 'tool',
     story: [
-      'Next.js Pages Router had a quiet gap: a typo in a route string or a renamed page could stay invisible until someone clicked the wrong path.',
-      'I wrote this plugin to bring that feedback closer to the code. It checks route comparisons, navigation calls, and Link targets against the actual pages tree, with support for patterns, concrete paths, query strings, hashes, basePath, and locales.',
-      'It was an exercise in moving small routing mistakes out of the browser and into the editor. Some tools feel useful because they make an entire class of errors harder to ship.',
+      'The plugin began with a routing mistake in a real Next.js project.',
+      'While moving navigation flows into a rule-based system, I compared the wrong Pages Router value. I had never needed to memorise the difference between `route`, `pathname`, and `asPath` — until a message from QA made the mistake visible.',
+      'Instead of adding another convention for the team to remember, I turned the distinction into an ESLint rule.',
+      'The first version validated route comparisons and navigation calls against the actual `pages/` tree. Version 1.1 expanded the same idea to `next/link`, static `next.config.mjs` files, faster dynamic route lookup, and more reliable route cache invalidation.',
+      'In the latest real-project benchmark, the mixed rules averaged 2.26 ms of overhead across 80 files and a 48-route Pages Router tree.',
     ],
     reflections: [
       'Good tooling shortens the distance between a mistake and its correction.',
