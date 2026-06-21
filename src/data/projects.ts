@@ -1,4 +1,4 @@
-export type ProjectStatus = 'live' | 'in progress' | 'private build' | 'paused' | 'archived';
+export type ProjectStatus = 'live' | 'in progress' | 'private build' | 'paused' | 'maintenance' | 'archived';
 export type ProjectKind = 'product' | 'tool' | 'creative' | 'system';
 
 export type Project = {
@@ -111,6 +111,40 @@ export const projects = [
     ],
     links: [],
     tags: ['memory', 'workflow', 'publishing'],
+  },
+  {
+    slug: 'steam-library-manager',
+    title: 'Steam Library Manager',
+    context:
+      'A Windows utility for moving and maintaining game libraries, born from one friend’s repeated trips between home and university.',
+    year: '2015–2025',
+    type: 'Open source desktop utility',
+    status: 'maintenance',
+    group: 'larger',
+    kind: 'tool',
+    story: [
+      'Steam Library Manager did not begin with a market or a feature list. A close friend spent much of university away from home, carrying games from his desktop to his laptop before leaving and moving them back when he returned.',
+      'Steam’s backup flow made that routine slower and more repetitive than it needed to be. I built SLM around that specific friction: installed games and backups became libraries that could be moved, updated, restored, and managed without rebuilding everything from scratch.',
+      'The project grew far beyond that first use case. It added drag-and-drop transfers, open backups, Workshop and mod preservation, compression, cleanup tools, task management, localization, and support for Origin and Uplay.',
+      'What started as a tool for one friend became a public open-source project shaped by years of real issues and requests. It accumulated more than fifty releases, hundreds of stars, and a decade of maintenance.',
+      'SLM is no longer under active feature development. The repository and releases remain available, and I still return when an important compatibility or safety fix needs attention.',
+    ],
+    reflections: [
+      'I did not begin with a user segment. I began with one friend and a workaround that kept repeating.',
+      'A small personal friction can travel much further once the structure around it becomes useful.',
+      'Once other people depend on a tool, maintenance becomes part of the product.',
+    ],
+    links: [
+      {
+        label: 'github',
+        href: 'https://github.com/mertcreates/Steam-Library-Manager',
+      },
+      {
+        label: 'latest release',
+        href: 'https://github.com/mertcreates/Steam-Library-Manager/releases/latest',
+      },
+    ],
+    tags: ['windows', 'open source', 'game libraries'],
   },
   {
     slug: 'eslint-next-pages-router',
