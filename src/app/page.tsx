@@ -32,10 +32,11 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className='mb-3'>Problem Solving with Empathy</h3>
+            <h3 className='mb-3'>Systems that begin with people</h3>
             <p>
-              I approach problems by understanding the people and context behind them. Good solutions come from care,
-              clarity, and thoughtful consideration — not just code.
+              Many of the things I make begin with something small and specific: a friend&apos;s repeated workaround, a
+              QA message, an inside joke, or a routine worth keeping. I pay attention to what keeps repeating, then
+              build the smallest structure that helps it work better, last longer, or stay visible.
             </p>
           </div>
 
