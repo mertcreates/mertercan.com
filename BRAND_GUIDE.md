@@ -1,9 +1,9 @@
-# MERT ERCAN — Brand & Tone Guide (v1.0)
+# MERT ERCAN — Brand & Tone Guide (v1.1)
 
 A reference document for keeping the voice, tone, rhythm, and identity of **mertercan.com** consistent across future updates, content additions, and redesigns.
 
 This guide defines the core philosophy that the site expresses:
-**build quietly, grow deeply.**
+**build quietly, show clearly, grow deeply.**
 
 ---
 
@@ -27,6 +27,8 @@ Every piece of content should reflect:
 - minimalism without emptiness
 
 Tone is personal, calm, and editorial — never loud, never corporate, never showy.
+Quiet does not mean hidden: useful detail, measurable results, and project status
+are welcome when they help people understand the work.
 
 ---
 
@@ -75,7 +77,7 @@ The voice should always feel:
 - free of urgency
 - honest
 - minimal
-- slightly poetic, but grounded
+- slightly poetic when it helps, but grounded
 
 Avoid:
 
@@ -124,7 +126,7 @@ Simple structures, human-centered problem solving, tiny creative worlds.
 
 ### **Selected Work — Proof of Approach**
 
-Refactoring, tools, community projects, structure over flash.
+Refactoring, tools, community projects, measurable outcomes, structure over flash.
 
 ### **How I Grow — Internal World**
 
@@ -154,7 +156,7 @@ These words and ideas define the atmosphere:
 - subtle shifts
 - gentle attention
 
-Future writing should naturally use 1–3 of these in any new section.
+Future writing may draw from these words and ideas when they fit naturally.
 
 ---
 
@@ -164,7 +166,7 @@ Future writing should naturally use 1–3 of these in any new section.
 - loud statements or “big promises”
 - marketing language
 - dramatic emotional claims
-- overly technical writing
+- technical detail used as performance instead of clarity
 - heavy effects or animations
 - anything flashy
 
@@ -180,13 +182,16 @@ When adding blog posts, notes, or new sections:
 - use whitespace
 - let ideas breathe
 - don’t force intensity
+- share technical detail, project status, or measurable results when they clarify the work
 - choose gentle transitions
 - focus on small observations
-- end with a soft reflection
+- end with a soft reflection when it genuinely fits
+- make the next step clear when one exists
 - avoid “here’s what you must do” tone
 
 Ask:
 **Does this grow quietly?
+Does this show clearly?
 Does this go deeper, not louder?**
 
 If yes → it belongs.
@@ -207,7 +212,6 @@ Keep everything within the orbit of this sentiment.
 
 (For future inspiration or header of a Notes page)
 
-**Build patiently.
-Notice gently.
-Grow deeply.
-Create with clarity.**
+**Build quietly.
+Show clearly.
+Grow deeply.**
