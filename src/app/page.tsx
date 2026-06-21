@@ -64,10 +64,11 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className='mb-3 flex items-center gap-2'>
+            <h3 className='mb-3 flex flex-wrap items-center gap-2'>
               <Link href='/making/steam-library-manager' className='text-ink hover:text-ink/70 no-underline'>
                 Steam Library Manager
               </Link>
+              <span className='text-ink/40 text-sm font-normal'>2015–2025 · 636 stars</span>
             </h3>
             <p>A game library utility born from one friend&apos;s repeated trips between home and university.</p>
           </div>
@@ -104,10 +105,11 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className='mb-3 flex items-center gap-2'>
+            <h3 className='mb-3 flex flex-wrap items-center gap-2'>
               <Link href='/making/eslint-next-pages-router' className='text-ink hover:text-ink/70 no-underline'>
                 eslint-plugin-next-pages-router
               </Link>
+              <span className='text-ink/40 text-sm font-normal'>v1.1 · 156 tests</span>
             </h3>
             <p>An ESLint plugin that catches invalid Pages Router routes before they reach the browser.</p>
           </div>
