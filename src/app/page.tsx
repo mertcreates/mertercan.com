@@ -11,12 +11,17 @@ export default function Home() {
       <div className='section-divider mb-16' />
 
       <Section title='Who I Am'>
-        <p className='text-ink/90 max-w-lg leading-[1.72]!'>
-          I create with clarity, empathy, and steady curiosity. I enjoy approaching challenges through thoughtful
-          thinking, simple structures, and careful iteration. Outside of work, I explore small joys like stickers,
-          Spanish, leadership, baking, and psychology. I grow through gentle experimentation and the tiny worlds I
-          create along the way.
-        </p>
+        <div className='text-ink/90 max-w-lg space-y-4 leading-[1.72]!'>
+          <p>
+            I tend to stay with things long enough to understand what really matters. I pay attention to how people
+            think, where small frictions keep repeating, and what makes something feel trustworthy rather than merely
+            functional.
+          </p>
+          <p>
+            When I care about something, I usually give it a structure — a tool, a ritual, a system, or a small world
+            that can keep growing without losing what made it meaningful.
+          </p>
+        </div>
       </Section>
 
       <div className='section-divider mb-16 md:mb-24' />
