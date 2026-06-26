@@ -3,7 +3,12 @@ import Link from 'next/link';
 import Footer from './components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Not Found — Mert Ercan',
+  title: 'Not Found',
+  description: 'This page could not be found on mertercan.com.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function NotFound() {

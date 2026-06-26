@@ -6,6 +6,7 @@ export type Project = {
   title: string;
   context: string;
   year: string;
+  updatedAt: string;
   type: string;
   status: ProjectStatus;
   group: 'larger' | 'small';
@@ -30,6 +31,7 @@ export const projects = [
     title: 'BugJar',
     context: 'A deterministic session envoy. It records exactly what happens, strictly within a defined scope.',
     year: '2026',
+    updatedAt: '2026-06-26',
     type: 'Browser extension',
     status: 'in progress',
     group: 'larger',
@@ -51,6 +53,7 @@ export const projects = [
     title: 'Haklısın!',
     context: 'A small ritual for turning everyday "haklısın" moments into a shared jar of symbolic coins.',
     year: '2026',
+    updatedAt: '2026-06-26',
     type: 'Digital ritual',
     status: 'live',
     group: 'larger',
@@ -73,6 +76,7 @@ export const projects = [
     title: 'Kombin.dev',
     context: 'A quiet wardrobe analysis panel. It does not decide what to wear; it makes the stronger options visible.',
     year: '2026',
+    updatedAt: '2026-06-26',
     type: 'Wardrobe analysis panel',
     status: 'private build',
     group: 'larger',
@@ -95,6 +99,7 @@ export const projects = [
     title: 'Project Canon',
     context: 'A private system for keeping character work coherent, movable, and ready to publish.',
     year: '2026',
+    updatedAt: '2026-06-26',
     type: 'System',
     status: 'private build',
     group: 'larger',
@@ -118,6 +123,7 @@ export const projects = [
     context:
       'A Windows utility for moving and maintaining game libraries, born from one friend’s repeated trips between home and university.',
     year: '2015–2025',
+    updatedAt: '2026-06-26',
     type: 'Open source desktop utility',
     status: 'maintenance',
     group: 'larger',
@@ -151,6 +157,7 @@ export const projects = [
     title: 'eslint-plugin-next-pages-router',
     context: 'An ESLint plugin that catches invalid Pages Router routes before they reach the browser.',
     year: '2026',
+    updatedAt: '2026-06-26',
     type: 'Open source tool',
     status: 'live',
     group: 'small',
@@ -183,6 +190,7 @@ export const projects = [
     title: 'eslint-plugin-mv3',
     context: 'An ESLint plugin for catching unsafe Manifest V3 executeScript closures at lint time.',
     year: '2026',
+    updatedAt: '2026-06-26',
     type: 'Open source tool',
     status: 'live',
     group: 'small',

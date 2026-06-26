@@ -24,7 +24,7 @@ function renderTextSegments(text: string): ReactNode[] {
         className='text-ink/80 border-ink/10 bg-ink/4 rounded-sm border px-1 py-0.5 font-mono text-[0.92em]'
       >
         {codeText}
-      </code>,
+      </code>
     );
 
     textStart = matchStart + rawMatch.length;

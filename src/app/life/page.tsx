@@ -2,11 +2,34 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 
+const description = 'A quiet record of how this site — and I — grow.';
+
 export const metadata: Metadata = {
-  title: 'Life — Mert Ercan',
-  description: 'A quiet record of how this site — and I — grow.',
+  title: 'Life',
+  description,
   alternates: {
-    canonical: 'https://mertercan.com/life',
+    canonical: '/life',
+  },
+  openGraph: {
+    title: 'Life — Mert Ercan',
+    description,
+    url: '/life',
+    siteName: 'Mert Ercan',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Mert Ercan — frontend developer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Life — Mert Ercan',
+    description,
+    images: ['/opengraph-image'],
   },
 };
 

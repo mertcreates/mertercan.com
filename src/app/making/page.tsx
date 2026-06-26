@@ -3,11 +3,52 @@ import Link from 'next/link';
 import Footer from '../components/Footer';
 import { projects } from '@/data/projects';
 
+const description = 'Things I have made — small and larger, tools and products, quiet and continuing.';
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://mertercan.com',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Making',
+      item: 'https://mertercan.com/making',
+    },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: 'Making — Mert Ercan',
-  description: 'Things I have made — small and larger, tools and products, quiet and continuing.',
+  title: 'Making',
+  description,
   alternates: {
-    canonical: 'https://mertercan.com/making',
+    canonical: '/making',
+  },
+  openGraph: {
+    title: 'Making — Mert Ercan',
+    description,
+    url: '/making',
+    siteName: 'Mert Ercan',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Mert Ercan — frontend developer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Making — Mert Ercan',
+    description,
+    images: ['/opengraph-image'],
   },
 };
 
@@ -17,6 +58,7 @@ const smallProjects = projects.filter((p) => p.group === 'small');
 export default function Making() {
   return (
     <main className='min-h-screen'>
+      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <section className='container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
         <div className='mb-10 md:mb-14'>
           <Link href='/' className='text-ink/40 hover:text-ink/60 text-sm no-underline transition-colors'>
