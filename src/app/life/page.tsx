@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Footer from '../components/Footer';
+import { siteName } from '@/lib/seo';
 
 const description = 'A quiet record of how this site — and I — grow.';
 
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Life — Mert Ercan',
     description,
     url: '/life',
-    siteName: 'Mert Ercan',
+    siteName,
     type: 'website',
     images: [
       {
@@ -43,10 +44,10 @@ const entries: Entry[] = [
   {
     date: 'June 2026',
     intro:
-      "A lot had been building quietly. Projects existed but the site hadn't caught up yet. This update was mostly about closing that gap.",
+      'A lot had been building quietly. Projects existed but the site had not caught up yet. This update was mostly about closing that gap.',
     notes: [
       'Added BugJar, Haklısın!, Kombin.dev, Project Canon, and two ESLint plugins to Selected Work. Built dedicated /making pages for each, and stripped away the "marketing" voice in favor of a calm, structural record.',
-      'The creative characters (Toffee, Rozi, Fluffy) moved into the background. The approach stayed; the names didn\'t need to.',
+      "The creative characters (Toffee, Rozi, Fluffy) moved into the background. The approach stayed; the names didn't need to.",
       '"How I Grow" got a second paragraph. It needed more room.',
       'This page — as a place to remember what was here and what changed.',
     ],

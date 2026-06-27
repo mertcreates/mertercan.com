@@ -1,41 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Poppins } from 'next/font/google';
 import Script from 'next/script';
+import { siteDescription, siteName, siteTitle, siteUrl } from '@/lib/seo';
 import './globals.css';
-
-const siteUrl = 'https://mertercan.com';
-const siteName = 'Mert Ercan';
-const siteDescription =
-  'A frontend developer exploring how small things grow into meaning, through clear structures, thoughtful work, and tiny creative worlds.';
-const socialLinks = [
-  'https://www.pinterest.com/mertcreates',
-  'https://github.com/mertcreates',
-  'https://www.linkedin.com/in/mert-ercan',
-  'https://x.com/Mert_Ercan',
-];
-const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: siteName,
-    url: siteUrl,
-    email: 'mailto:me@mertercan.com',
-    jobTitle: 'Frontend Developer',
-    sameAs: socialLinks,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: siteName,
-    url: siteUrl,
-    description: siteDescription,
-    inLanguage: 'en',
-    publisher: {
-      '@type': 'Person',
-      name: siteName,
-    },
-  },
-];
 
 // eslint-disable-next-line new-cap
 export const poppins = Poppins({
@@ -47,7 +14,7 @@ export const poppins = Poppins({
 export const metadata: Metadata = {
   applicationName: 'mertercan.com',
   title: {
-    default: 'Mert Ercan — creating with clarity and curiosity',
+    default: siteTitle,
     template: '%s — Mert Ercan',
   },
   description: siteDescription,
@@ -59,7 +26,7 @@ export const metadata: Metadata = {
   creator: siteName,
   publisher: siteName,
   openGraph: {
-    title: 'Mert Ercan — creating with clarity and curiosity',
+    title: siteTitle,
     description: siteDescription,
     url: '/',
     siteName,
@@ -76,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mert Ercan — creating with clarity and curiosity',
+    title: siteTitle,
     description: siteDescription,
     creator: '@Mert_Ercan',
     images: ['/opengraph-image'],
@@ -100,7 +67,6 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${poppins.className} antialiased`}>
         {children}
-        <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Script id='quiet-nod'>
           {
             'if (!window._q) { window._q = true; console.log("you found the quiet part.\\n\\nmaybe we care about the same small things.\\n\\nme@mertercan.com"); }'

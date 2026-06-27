@@ -8,6 +8,8 @@ type Props = {
 };
 
 export default function MakingDetail({ project }: Props) {
+  const details = [...(project.role ? [`Role: ${project.role}`] : []), ...(project.proofPoints ?? [])];
+
   return (
     <section className='container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
       {/* Back link */}
@@ -33,6 +35,19 @@ export default function MakingDetail({ project }: Props) {
       </p>
 
       <StoryText paragraphs={project.story} />
+
+      {details.length > 0 && (
+        <div className='mb-14 max-w-[620px] md:mb-16'>
+          <div className='text-ink/35 mb-4 text-sm font-medium tracking-wide uppercase'>details</div>
+          <ul className='space-y-2.5'>
+            {details.map((line) => (
+              <li key={line} className="before:text-ink/30 text-ink/70 list-none before:mr-3 before:content-['-']">
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Visual frame — optional */}
       {project.visual && (

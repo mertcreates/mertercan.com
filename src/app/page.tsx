@@ -2,10 +2,14 @@ import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Link from 'next/link';
 import Section from './components/Section';
+import { buildHomeJsonLd } from '@/lib/seo';
+
+const jsonLd = buildHomeJsonLd();
 
 export default function Home() {
   return (
     <main className='min-h-screen'>
+      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
 
       <div className='section-divider mb-16' />
@@ -65,7 +69,7 @@ export default function Home() {
                 BugJar
               </Link>
             </h3>
-            <p>A deterministic session envoy. It records exactly what happens, strictly within a defined scope.</p>
+            <p>A local-first browser session recorder that preserves what happened within a scope the user defines.</p>
           </div>
 
           <div>
@@ -95,7 +99,8 @@ export default function Home() {
               <span className='text-ink/40 text-sm font-normal'>private</span>
             </h3>
             <p>
-              A quiet wardrobe analysis panel. It does not decide what to wear; it makes the stronger options visible.
+              A personal wardrobe system that builds and evaluates outfits from the clothes already there, without
+              reducing the decision to a single score.
             </p>
           </div>
 

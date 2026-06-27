@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Footer from '@/app/components/Footer';
 import { projects, getProjectBySlug } from '@/data/projects';
+import { buildProjectJsonLd, getProjectDescription, siteName } from '@/lib/seo';
 import MakingDetail from './MakingDetail';
 
 type Props = {
@@ -22,17 +23,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: 'Not Found' };
   }
 
+  const description = getProjectDescription(project);
+
   return {
     title: project.title,
-    description: project.context,
+    description,
     alternates: {
       canonical: `/making/${project.slug}`,
     },
     openGraph: {
       title: `${project.title} — Mert Ercan`,
-      description: project.context,
+      description,
       url: `/making/${project.slug}`,
-      siteName: 'Mert Ercan',
+      siteName,
       type: 'website',
       images: [
         {
@@ -46,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: `${project.title} — Mert Ercan`,
-      description: project.context,
+      description,
       images: ['/opengraph-image'],
     },
   };
@@ -60,34 +63,11 @@ export default async function MakingPage({ params }: Props) {
     notFound();
   }
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://mertercan.com',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Making',
-        item: 'https://mertercan.com/making',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: project.title,
-        item: `https://mertercan.com/making/${project.slug}`,
-      },
-    ],
-  };
+  const projectJsonLd = buildProjectJsonLd(project);
 
   return (
     <main className='min-h-screen'>
-      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }} />
       <MakingDetail project={project} />
       <Footer />
     </main>

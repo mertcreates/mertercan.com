@@ -2,25 +2,15 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { projects } from '@/data/projects';
+import { buildBreadcrumbJsonLd, siteName, siteUrl } from '@/lib/seo';
 
 const description = 'Things I have made — small and larger, tools and products, quiet and continuing.';
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://mertercan.com',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Making',
-      item: 'https://mertercan.com/making',
-    },
-  ],
+  ...buildBreadcrumbJsonLd([
+    { name: 'Home', url: siteUrl },
+    { name: 'Making', url: `${siteUrl}/making` },
+  ]),
 };
 
 export const metadata: Metadata = {
@@ -33,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Making — Mert Ercan',
     description,
     url: '/making',
-    siteName: 'Mert Ercan',
+    siteName,
     type: 'website',
     images: [
       {
