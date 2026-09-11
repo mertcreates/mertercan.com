@@ -95,6 +95,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twentieth story about a daisy quietly witnessing a familiar ritual that returns each May.',
         relatedLink: { href: '/writing/hikayeler/arena-xx-mayis', label: 'Arena XX — Mayıs' },
       },
+      {
+        text: 'Arena continued with a twenty-first story about a man leaving the palace and finding himself alone with an old letter and unanswered questions beside a river.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxi-akis', label: 'Arena XXI — Akış' },
+      },
     ],
   },
   {
