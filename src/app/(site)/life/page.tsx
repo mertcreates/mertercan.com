@@ -99,6 +99,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twenty-first story about a man leaving the palace and finding himself alone with an old letter and unanswered questions beside a river.',
         relatedLink: { href: '/writing/hikayeler/arena-xxi-akis', label: 'Arena XXI — Akış' },
       },
+      {
+        text: 'Arena continued with a twenty-second story about a man returning to his family home while his father is in hospital, where familiar traces of care meet a changing routine.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxii-yerinde', label: 'Arena XXII — Yerinde' },
+      },
     ],
   },
   {
