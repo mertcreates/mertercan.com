@@ -103,6 +103,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twenty-second story about a man returning to his family home while his father is in hospital, where familiar traces of care meet a changing routine.',
         relatedLink: { href: '/writing/hikayeler/arena-xxii-yerinde', label: 'Arena XXII — Yerinde' },
       },
+      {
+        text: 'Arena continued with a twenty-third story about a therapist whose busy day brings her back to a book left blank for years and an appointment of her own.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxiii-sira', label: 'Arena XXIII — Sıra' },
+      },
     ],
   },
   {
