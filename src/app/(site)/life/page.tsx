@@ -111,6 +111,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twenty-fourth story about a café worker waiting on a job application as a familiar customer returns and the day carries on.',
         relatedLink: { href: '/writing/hikayeler/arena-xxiv-olur', label: 'Arena XXIV — Olur' },
       },
+      {
+        text: 'Arena continued with a twenty-fifth story about an old man sitting in the rain, watching a young couple before following a familiar voice.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxv-bir-sure', label: 'Arena XXV — Bir Süre' },
+      },
     ],
   },
   {
