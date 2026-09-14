@@ -107,6 +107,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twenty-third story about a therapist whose busy day brings her back to a book left blank for years and an appointment of her own.',
         relatedLink: { href: '/writing/hikayeler/arena-xxiii-sira', label: 'Arena XXIII — Sıra' },
       },
+      {
+        text: 'Arena continued with a twenty-fourth story about a café worker waiting on a job application as a familiar customer returns and the day carries on.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxiv-olur', label: 'Arena XXIV — Olur' },
+      },
     ],
   },
   {
