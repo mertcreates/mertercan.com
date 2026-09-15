@@ -64,19 +64,19 @@ const entries: Entry[] = [
         relatedLink: { href: '/writing/hikayeler/arena-xii-gerekce', label: 'Arena XII — Gerekçe' },
       },
       {
-        text: 'Arena continued with a thirteenth story about a man finding the first step toward a new routine and a new acquaintance in a small café.',
+        text: 'Arena continued with a thirteenth story about a man searching for somewhere to work who wanders into a small café.',
         relatedLink: { href: '/writing/hikayeler/arena-xiii-mudavim', label: 'Arena XIII — Müdavim' },
       },
       {
-        text: 'Arena continued with a fourteenth story about a mother trapped in a silent house after the routine she trusted is disrupted.',
+        text: 'Arena continued with a fourteenth story about a familiar visitor returning to a place where the usual welcome is missing.',
         relatedLink: { href: '/writing/hikayeler/arena-xiv-yokluk', label: 'Arena XIV — Yokluk' },
       },
       {
-        text: 'Arena continued with a fifteenth story about a therapist tracing the questions she asks her client back to her own attention and role.',
+        text: 'Arena continued with a fifteenth story about a therapist following the thread of a question through a session.',
         relatedLink: { href: '/writing/hikayeler/arena-xv-iz', label: 'Arena XV — İz' },
       },
       {
-        text: 'Arena continued with a sixteenth story about a frightened child finding calm in his father’s arms and returning to sleep beside his mother.',
+        text: 'Arena continued with a sixteenth story about a child waking to rain and reaching for what feels familiar.',
         relatedLink: { href: '/writing/hikayeler/arena-xvi-yaninda', label: 'Arena XVI — Yanında' },
       },
       {
@@ -84,40 +84,44 @@ const entries: Entry[] = [
         relatedLink: { href: '/writing/hikayeler/arena-xvii-birlikte', label: 'Arena XVII — Birlikte' },
       },
       {
-        text: 'Arena continued with an eighteenth story about a young employee who solves a problem and finds herself facing the expectations that come with being seen.',
+        text: 'Arena continued with an eighteenth story about a young employee stepping into a room’s attention and feeling it shift.',
         relatedLink: { href: '/writing/hikayeler/arena-xviii-bakis', label: 'Arena XVIII — Bakış' },
       },
       {
-        text: 'Arena continued with a nineteenth story about a young girl whose questions during a rainy family visit echo through generations.',
+        text: 'Arena continued with a nineteenth story about a child’s questions on a rainy family visit.',
         relatedLink: { href: '/writing/hikayeler/arena-xix-her-zaman', label: 'Arena XIX — Her Zaman' },
       },
       {
-        text: 'Arena continued with a twentieth story about a daisy quietly witnessing a familiar ritual that returns each May.',
+        text: 'Arena continued with a twentieth story about a quiet presence and the changes that return with May.',
         relatedLink: { href: '/writing/hikayeler/arena-xx-mayis', label: 'Arena XX — Mayıs' },
       },
       {
-        text: 'Arena continued with a twenty-first story about a man leaving the palace and finding himself alone with an old letter and unanswered questions beside a river.',
+        text: 'Arena continued with a twenty-first story about a man walking away from judgment while wind and water carry the evening onward.',
         relatedLink: { href: '/writing/hikayeler/arena-xxi-akis', label: 'Arena XXI — Akış' },
       },
       {
-        text: 'Arena continued with a twenty-second story about a man returning to his family home while his father is in hospital, where familiar traces of care meet a changing routine.',
+        text: 'Arena continued with a twenty-second story about a return to a familiar house and the traces that care leaves behind.',
         relatedLink: { href: '/writing/hikayeler/arena-xxii-yerinde', label: 'Arena XXII — Yerinde' },
       },
       {
-        text: 'Arena continued with a twenty-third story about a therapist whose busy day brings her back to a book left blank for years and an appointment of her own.',
+        text: 'Arena continued with a twenty-third story about a therapist beginning a crowded day with something long left unwritten.',
         relatedLink: { href: '/writing/hikayeler/arena-xxiii-sira', label: 'Arena XXIII — Sıra' },
       },
       {
-        text: 'Arena continued with a twenty-fourth story about a café worker waiting on a job application as a familiar customer returns and the day carries on.',
+        text: 'Arena continued with a twenty-fourth story about an unanswered message carried through an ordinary day at a café.',
         relatedLink: { href: '/writing/hikayeler/arena-xxiv-olur', label: 'Arena XXIV — Olur' },
       },
       {
-        text: 'Arena continued with a twenty-fifth story about an old man sitting in the rain, watching a young couple before following a familiar voice.',
+        text: 'Arena continued with a twenty-fifth story about an old man sitting in the rain while a brief scene unfolds across the park.',
         relatedLink: { href: '/writing/hikayeler/arena-xxv-bir-sure', label: 'Arena XXV — Bir Süre' },
       },
       {
-        text: 'Arena continued with a twenty-sixth story about a mother walking through the rain with her daughter and hearing a familiar warning in a new way.',
+        text: 'Arena continued with a twenty-sixth story about a mother and daughter crossing a rainy day with a familiar warning between them.',
         relatedLink: { href: '/writing/hikayeler/arena-xxvi-dikkat', label: 'Arena XXVI — Dikkat' },
+      },
+      {
+        text: 'Arena continued with a twenty-seventh story about a family evening shaped by a child’s game and a familiar word.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxvii-merhamet', label: 'Arena XXVII — Merhamet' },
       },
     ],
   },
@@ -156,15 +160,15 @@ const entries: Entry[] = [
         relatedLink: { href: '/writing/hikayeler/arena-iv-ara', label: 'Arena IV — Ara' },
       },
       {
-        text: 'Arena continued with a fifth story about a woman waiting beside her comatose husband, held by rain and memory.',
+        text: 'Arena continued with a fifth story about a woman keeping watch through rain and memory.',
         relatedLink: { href: '/writing/hikayeler/arena-v-bekleyis', label: 'Arena V — Bekleyiş' },
       },
       {
-        text: 'Arena continued with a sixth story about an unnamed advisor facing the emptiness left by a king and questioning the role he was given.',
+        text: 'Arena continued with a sixth story about an advisor facing a silence that changes the shape of his role.',
         relatedLink: { href: '/writing/hikayeler/arena-vi-bosluk', label: 'Arena VI — Boşluk' },
       },
       {
-        text: 'Arena continued with a seventh story about a man trying to make sense of a gladiator dream and wondering whether he needs to find its answers right away.',
+        text: 'Arena continued with a seventh story about a question that follows a man out of a gladiator dream.',
         relatedLink: { href: '/writing/hikayeler/arena-vii-soru', label: 'Arena VII — Soru' },
       },
       {
@@ -172,15 +176,15 @@ const entries: Entry[] = [
         relatedLink: { href: '/writing/hikayeler/arena-viii-bir-kere-daha', label: 'Arena VIII — Bir Kere Daha' },
       },
       {
-        text: 'Arena continued with a ninth story about a couple giving themselves more time on an evening that unfolds beyond their plans, while a half-finished conversation waits in the background.',
+        text: 'Arena continued with a ninth story about a couple giving themselves more time on an evening beyond their plans.',
         relatedLink: { href: '/writing/hikayeler/arena-ix-gece', label: 'Arena IX — Gece' },
       },
       {
-        text: 'Arena continued with a tenth story about a woman questioning why she wants what the masked crowd wants.',
+        text: 'Arena continued with a tenth story about a woman who finds herself inside a crowd moving as one.',
         relatedLink: { href: '/writing/hikayeler/arena-x-seyirci', label: 'Arena X — Seyirci' },
       },
       {
-        text: 'Arena continued with an eleventh story about a man questioning the role of being everyone’s rescuer and letting the team find its own solution.',
+        text: 'Arena continued with an eleventh story about a man called to solve a problem and the role waiting for him in the room.',
         relatedLink: { href: '/writing/hikayeler/arena-xi-gorev', label: 'Arena XI — Görev' },
       },
       {
