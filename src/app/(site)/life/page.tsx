@@ -115,6 +115,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twenty-fifth story about an old man sitting in the rain, watching a young couple before following a familiar voice.',
         relatedLink: { href: '/writing/hikayeler/arena-xxv-bir-sure', label: 'Arena XXV — Bir Süre' },
       },
+      {
+        text: 'Arena continued with a twenty-sixth story about a mother walking through the rain with her daughter and hearing a familiar warning in a new way.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxvi-dikkat', label: 'Arena XXVI — Dikkat' },
+      },
     ],
   },
   {
