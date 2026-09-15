@@ -123,6 +123,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twenty-seventh story about a family evening shaped by a child’s game and a familiar word.',
         relatedLink: { href: '/writing/hikayeler/arena-xxvii-merhamet', label: 'Arena XXVII — Merhamet' },
       },
+      {
+        text: 'Arena continued with a twenty-eighth story about light, shadow, and what remains present through both.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxviii-hala', label: 'Arena XXVIII — Hâlâ' },
+      },
     ],
   },
   {
