@@ -99,7 +99,6 @@ export default function Arena() {
                   <p className='text-ink/70! mb-1.5 text-sm!'>
                     {arenaSeries.title} · {story.position} · <time dateTime={story.date}>{story.displayDate}</time>
                   </p>
-                  <p className='text-ink/70 mt-0! text-sm!'>{story.description}</p>
                 </article>
               </li>
             ))}

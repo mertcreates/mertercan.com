@@ -119,9 +119,12 @@ export default async function WritingEntryPage({ params }: Props) {
           {getWritingKicker(writing)} · <time dateTime={writing.date}>{writing.displayDate}</time>
         </p>
         <h1 className='mb-4 max-w-[680px] text-[2.2rem]! md:text-[3.1rem]!'>{writing.title}</h1>
-        <p className='text-ink/70 mt-0! max-w-[620px] text-sm! italic'>{writing.description}</p>
+        {writing.format !== 'story' && (
+          <p className='text-ink/70 mt-0! max-w-[620px] text-sm! italic'>{writing.description}</p>
+        )}
 
         <div
+          data-nosnippet={writing.format === 'story' ? '' : undefined}
           className={writingBodyClassNames[writing.format]}
           dangerouslySetInnerHTML={{ __html: writing.contentHtml }}
         />

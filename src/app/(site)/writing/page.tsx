@@ -117,7 +117,6 @@ export default function Writing() {
                     {story.title}
                   </Link>
                 </h3>
-                <p className='text-ink/70 mt-0! text-sm!'>{story.description}</p>
               </article>
             ))}
           </div>

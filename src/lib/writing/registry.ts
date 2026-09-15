@@ -21,7 +21,7 @@ const writingSeriesDefinitions = {
   arena: {
     slug: 'arena',
     title: 'Arena',
-    description: 'Birbirini yıllar sonra bulan kısa hikâyeler.',
+    description: 'Devam eden bir kısa hikâye serisi.',
     hubPath: '/arena',
     inLanguage: 'tr',
   },
@@ -65,7 +65,6 @@ type WritingBase = {
   siteAddedAt: string;
   updatedAt?: string;
   displayDate: string;
-  description: string;
   seoDescription: string;
   keywords: string[];
   kind: string;
@@ -73,6 +72,7 @@ type WritingBase = {
 };
 
 export type DialogueWriting = WritingBase & {
+  description: string;
   group: 'denemeler';
   format: 'dialogue';
   position: number;
@@ -80,6 +80,7 @@ export type DialogueWriting = WritingBase & {
 };
 
 export type ArticleWriting = WritingBase & {
+  description: string;
   group: 'konusmalar';
   format: 'article';
   series?: never;
@@ -93,6 +94,7 @@ export type StoryWriting = WritingBase & {
 };
 
 export type PoemWriting = WritingBase & {
+  description: string;
   group: 'siirler';
   format: 'poem';
   series?: never;
@@ -148,6 +150,21 @@ function requiredString(value: unknown, field: string, filePath: string): string
 
 function optionalString(value: unknown, fallback: string, field: string, filePath: string): string {
   return value === undefined ? fallback : requiredString(value, field, filePath);
+}
+
+function getWritingDescriptionMetadata(data: Record<string, unknown>, filePath: string) {
+  const description = requiredString(data.description, 'description', filePath);
+
+  return {
+    description,
+    seoDescription: optionalString(data.seoDescription, description, 'seoDescription', filePath),
+  };
+}
+
+function rejectStoryDescriptionMetadata(data: Record<string, unknown>, filePath: string): void {
+  if (data.description !== undefined || data.seoDescription !== undefined) {
+    throw new Error(`${filePath}: stories use generated spoiler-free metadata; remove description and seoDescription.`);
+  }
 }
 
 function optionalWritingSeries(value: unknown, filePath: string): WritingSeriesSlug | undefined {
@@ -230,7 +247,6 @@ function loadWriting(relativeFilePath: string): WritingEntry {
     throw new Error(`${relativeFilePath}: raw HTML is not allowed.`);
   }
 
-  const description = requiredString(data.description, 'description', relativeFilePath);
   const series = optionalWritingSeries(data.series, relativeFilePath);
 
   const common = {
@@ -241,8 +257,6 @@ function loadWriting(relativeFilePath: string): WritingEntry {
     siteAddedAt: requiredIsoDate(data.siteAddedAt, 'siteAddedAt', relativeFilePath),
     updatedAt: optionalIsoDate(data.updatedAt, 'updatedAt', relativeFilePath),
     displayDate: requiredString(data.displayDate, 'displayDate', relativeFilePath),
-    description,
-    seoDescription: optionalString(data.seoDescription, description, 'seoDescription', relativeFilePath),
     keywords: parseKeywords(data.keywords, relativeFilePath),
     contentHtml: String(processor.processSync(content)),
   };
@@ -254,8 +268,13 @@ function loadWriting(relativeFilePath: string): WritingEntry {
 
     const position = requiredPositiveInteger(data.position, 'position', relativeFilePath);
 
+    if (series && series !== 'denemeler') {
+      throw new Error(`${relativeFilePath}: dialogue series must use the denemeler series.`);
+    }
+
     return {
       ...common,
+      ...getWritingDescriptionMetadata(data, relativeFilePath),
       group,
       format,
       kind: `${position}. deneme`,
@@ -271,8 +290,17 @@ function loadWriting(relativeFilePath: string): WritingEntry {
 
     const position = requiredPositiveInteger(data.position, 'position', relativeFilePath);
 
+    if (series && series !== 'arena') {
+      throw new Error(`${relativeFilePath}: story series must use the arena series.`);
+    }
+
+    rejectStoryDescriptionMetadata(data, relativeFilePath);
+
     return {
       ...common,
+      seoDescription: series
+        ? `Mert Ercan’ın devam eden kısa hikâye serisinin ${position}. hikâyesi: “${common.title}”.`
+        : `${position}. kısa hikâye.`,
       group,
       format,
       kind: `${position}. hikâye`,
@@ -292,6 +320,7 @@ function loadWriting(relativeFilePath: string): WritingEntry {
 
     return {
       ...common,
+      ...getWritingDescriptionMetadata(data, relativeFilePath),
       group,
       format,
       kind: 'Şiir',
@@ -308,6 +337,7 @@ function loadWriting(relativeFilePath: string): WritingEntry {
 
   return {
     ...common,
+    ...getWritingDescriptionMetadata(data, relativeFilePath),
     group,
     format,
     kind: requiredString(data.kind, 'kind', relativeFilePath),
@@ -366,13 +396,16 @@ function loadWritings(): WritingEntry[] {
   return entries;
 }
 
-export type WritingSeriesEntry =
-  | (DialogueWriting & { series: WritingSeriesSlug })
-  | (StoryWriting & { series: WritingSeriesSlug });
+type WritingSeriesEntryBySlug = {
+  arena: StoryWriting & { series: 'arena' };
+  denemeler: DialogueWriting & { series: 'denemeler' };
+};
 
-export type WritingSeries = Readonly<
-  WritingSeriesDefinition & {
-    entries: readonly WritingSeriesEntry[];
+export type WritingSeriesEntry = WritingSeriesEntryBySlug[WritingSeriesSlug];
+
+export type WritingSeries<Series extends WritingSeriesSlug = WritingSeriesSlug> = Readonly<
+  (typeof writingSeriesDefinitions)[Series] & {
+    entries: readonly WritingSeriesEntryBySlug[Series][];
   }
 >;
 
@@ -464,14 +497,14 @@ export function getPoemWritings(): PoemWriting[] {
   return [...writingIndex.byGroup.siirler];
 }
 
-export function getWritingSeries(series: WritingSeriesSlug): WritingSeries {
+export function getWritingSeries<Series extends WritingSeriesSlug>(series: Series): WritingSeries<Series> {
   const definition = getWritingSeriesDefinition(series);
   const entries = writingIndex.bySeries.get(series) ?? [];
 
   return {
     ...definition,
-    entries: [...entries],
-  };
+    entries: [...entries] as WritingSeriesEntryBySlug[Series][],
+  } as WritingSeries<Series>;
 }
 
 export type WritingNavigation = {

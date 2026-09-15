@@ -34,7 +34,7 @@ export function GET(): Response {
         <title>${escapeXml(story.title)}</title>
         <link>${escapeXml(storyUrl)}</link>
         <guid isPermaLink="true">${escapeXml(storyUrl)}</guid>
-        <description>${escapeXml(story.description)}</description>
+        <description>${escapeXml(story.seoDescription)}</description>
         <pubDate>${escapeXml(toRfc822Date(publishedDate))}</pubDate>
       </item>`;
     })
