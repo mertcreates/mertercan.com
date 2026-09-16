@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ArenaReadTracker from '@/app/components/ArenaReadTracker';
 import Footer from '@/app/components/Footer';
 import WritingShare from '@/app/components/WritingShare';
 import {
@@ -140,6 +141,8 @@ export default async function WritingEntryPage({ params }: Props) {
           className={writingBodyClassNames[writing.format]}
           dangerouslySetInnerHTML={{ __html: writing.contentHtml }}
         />
+
+        {isStory && <ArenaReadTracker slug={writing.slug} />}
 
         {isSeriesEntry
           ? navigation.series &&

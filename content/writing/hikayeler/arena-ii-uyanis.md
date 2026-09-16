@@ -9,4 +9,16 @@ series: "arena"
 position: 2
 ---
 
-Uyandığında hâlâ nefes nefeseydi. Sağ eli, sanki hâlâ kabzasını bırakmamış gibi çarşafı sıkıyordu. Elini gevşetti. Avucunda hiçbir şey yoktu. Saate bakmak için telefonuna uzandığında saatin 03:32 olduğunu gördü. Bir süre dışarıdan gelen o huzurlu yağmur sesini dinledi. Gözlerinin karanlığa alışmasıyla birlikte doğruldu ve ayağa kalktı. Bir an dengesini kaybedecekmiş gibi oldu ve eli istemsizce yanında olmayan kılıca uzandı. Sonra dengeye bindi. Kendi başına. Pencereye doğru yürüdü ve bir süre yağmuru izledi. Nedenini bilmeden yağmurun tadını merak etmişti. Pencereyi açtı, elini uzattı ve birkaç damlanın eline düşmesine izin verdi. Sonra da tadına baktı. Yağmur, toprak ve su tadındaydı; tuzlu değildi. Birden omuzlarının gevşediğini fark etti ve derin bir nefes verdi. Bir süre daha yağmuru izledi. O sırada yolun karşısında, yağmurdan kaçarcasına hızlı adımlarla sarmaş dolaş yürüyen bir çift gördü. Bir anlığına sanki çiftin de onu izlediğini düşündü. Sonra pencereyi açık bırakıp yatağına döndü. Yatarken çarşafı yeniden tuttuğunu fark etti. Parmaklarını gevşetti ve elini yastığının yanına bıraktı. Bu kez avucunda olmayan şeyi aramadı. Yavaşça gözlerini kapattı ve yağmurun sesiyle tekrar uykuya daldı.
+Uyandığında hâlâ nefes nefeseydi. Sağ eli, sanki hâlâ kabzasını bırakmamış gibi çarşafı sıkıyordu. Elini gevşetti. Avucunda hiçbir şey yoktu.
+
+Saate bakmak için telefonuna uzandığında saatin 03:32 olduğunu gördü. Bir süre dışarıdan gelen o huzurlu yağmur sesini dinledi. Gözlerinin karanlığa alışmasıyla birlikte doğruldu ve ayağa kalktı.
+
+Bir an dengesini kaybedecekmiş gibi oldu ve eli istemsizce yanında olmayan kılıca uzandı. Sonra dengeye bindi. Kendi başına.
+
+Pencereye doğru yürüdü ve bir süre yağmuru izledi. Nedenini bilmeden yağmurun tadını merak etmişti. Pencereyi açtı, elini uzattı ve birkaç damlanın eline düşmesine izin verdi. Sonra da tadına baktı. Yağmur, toprak ve su tadındaydı; tuzlu değildi.
+
+Birden omuzlarının gevşediğini fark etti ve derin bir nefes verdi. Bir süre daha yağmuru izledi. O sırada yolun karşısında, yağmurdan kaçarcasına hızlı adımlarla sarmaş dolaş yürüyen bir çift gördü. Bir anlığına sanki çiftin de onu izlediğini düşündü.
+
+Sonra pencereyi açık bırakıp yatağına döndü. Yatarken çarşafı yeniden tuttuğunu fark etti. Parmaklarını gevşetti ve elini yastığının yanına bıraktı. Bu kez avucunda olmayan şeyi aramadı.
+
+Yavaşça gözlerini kapattı ve yağmurun sesiyle tekrar uykuya daldı.
