@@ -127,6 +127,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twenty-eighth story about light, shadow, and what remains present through both.',
         relatedLink: { href: '/writing/hikayeler/arena-xxviii-hala', label: 'Arena XXVIII — Hâlâ' },
       },
+      {
+        text: 'Arena continued with a twenty-ninth story about a quiet conversation, a notebook, and the question that lingers afterward.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxix-sonraki', label: 'Arena XXIX — Sonraki' },
+      },
     ],
   },
   {
