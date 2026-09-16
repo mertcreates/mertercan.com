@@ -131,6 +131,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a twenty-ninth story about a quiet conversation, a notebook, and the question that lingers afterward.',
         relatedLink: { href: '/writing/hikayeler/arena-xxix-sonraki', label: 'Arena XXIX — Sonraki' },
       },
+      {
+        text: 'Arena continued with a thirtieth story about a quiet morning seen through a child’s eyes.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxx-once', label: 'Arena XXX — Önce' },
+      },
     ],
   },
   {
