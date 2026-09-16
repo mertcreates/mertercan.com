@@ -28,7 +28,7 @@ const writingBodyClassNames = {
   dialogue: 'essay-dialogue',
   poem: 'writing-poem',
   article: 'writing-prose',
-  story: 'writing-prose',
+  story: 'writing-story',
 } as const;
 
 export const dynamicParams = false;
@@ -96,6 +96,11 @@ export default async function WritingEntryPage({ params }: Props) {
   const writingUrl = getWritingEntryUrl(writing);
   const navigation = getWritingNavigation(writing);
   const isSeriesEntry = Boolean(writing.series);
+  const isStory = writing.format === 'story';
+  const backLink =
+    isStory && navigation.series
+      ? { href: navigation.series.hubPath, label: `← ${navigation.series.title}` }
+      : { href: '/writing', label: '← writing' };
   const writingShareSeries =
     'position' in writing && writing.series ? { slug: writing.series, position: writing.position } : undefined;
   const writingShareLinks = buildWritingShareLinks({
@@ -110,14 +115,21 @@ export default async function WritingEntryPage({ params }: Props) {
       <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(writingJsonLd) }} />
       <article className='container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
         <div data-nosnippet='' className='mb-10 md:mb-14'>
-          <Link href='/writing' className='text-ink/70 hover:text-ink/85 text-sm no-underline transition-colors'>
-            ← writing
+          <Link href={backLink.href} className='text-ink/70 hover:text-ink/85 text-sm no-underline transition-colors'>
+            {backLink.label}
           </Link>
         </div>
 
-        <p className='text-ink/70 mb-3 text-sm!'>
-          {getWritingKicker(writing)} · <time dateTime={writing.date}>{writing.displayDate}</time>
-        </p>
+        {isStory && navigation.series ? (
+          <p className='text-ink/70 mb-3 text-sm! tabular-nums'>
+            {navigation.series.title} serisi · {writing.position}/{navigation.total} ·{' '}
+            <time dateTime={writing.date}>{writing.displayDate}</time>
+          </p>
+        ) : (
+          <p className='text-ink/70 mb-3 text-sm!'>
+            {getWritingKicker(writing)} · <time dateTime={writing.date}>{writing.displayDate}</time>
+          </p>
+        )}
         <h1 className='mb-4 max-w-[680px] text-[2.2rem]! md:text-[3.1rem]!'>{writing.title}</h1>
         {writing.format !== 'story' && (
           <p className='text-ink/70 mt-0! max-w-[620px] text-sm! italic'>{writing.description}</p>
@@ -130,7 +142,50 @@ export default async function WritingEntryPage({ params }: Props) {
         />
 
         {isSeriesEntry
-          ? navigation.series && (
+          ? navigation.series &&
+            (isStory ? (
+              <div data-nosnippet=''>
+                <nav
+                  aria-label={`${navigation.series.title} serisi`}
+                  className='border-ink/8 max-w-[640px] border-t pt-8'
+                >
+                  <div className='grid gap-3 sm:grid-cols-2'>
+                    {navigation.previous && (
+                      <Link
+                        href={`/writing/${navigation.previous.path.join('/')}`}
+                        className='border-ink/10 text-ink/70 hover:border-ink/25 hover:text-ink focus-visible:outline-accent flex min-h-24 flex-col justify-between gap-3 border p-4 no-underline! transition-colors outline-offset-4 focus-visible:outline-2'
+                      >
+                        <span className='text-sm'>Önceki hikâye</span>
+                        <span className='text-ink font-medium'>← {navigation.previous.title}</span>
+                        <span className='text-sm tabular-nums'>
+                          {writing.position - 1}/{navigation.total}
+                        </span>
+                      </Link>
+                    )}
+                    {navigation.next && (
+                      <Link
+                        href={`/writing/${navigation.next.path.join('/')}`}
+                        className='border-ink/15 text-ink hover:border-ink/30 focus-visible:outline-accent flex min-h-24 flex-col justify-between gap-3 border p-4 no-underline! transition-colors outline-offset-4 focus-visible:outline-2 sm:col-start-2 sm:items-end sm:text-right'
+                      >
+                        <span className='text-ink/70 text-sm'>Sonraki hikâye</span>
+                        <span className='font-medium'>{navigation.next.title} →</span>
+                        <span className='text-ink/70 text-sm tabular-nums'>
+                          {writing.position + 1}/{navigation.total}
+                        </span>
+                      </Link>
+                    )}
+                  </div>
+                  <div className='mt-5'>
+                    <Link
+                      href={navigation.series.hubPath}
+                      className='text-ink/70 hover:text-ink text-sm no-underline transition-colors'
+                    >
+                      Tüm {navigation.series.title} hikâyeleri
+                    </Link>
+                  </div>
+                </nav>
+              </div>
+            ) : (
               <div data-nosnippet=''>
                 <nav
                   aria-label={`${navigation.series.title} serisi`}
@@ -164,15 +219,13 @@ export default async function WritingEntryPage({ params }: Props) {
                       href={navigation.series.hubPath}
                       className='text-ink/70 hover:text-ink text-sm no-underline transition-colors'
                     >
-                      {writing.group === 'hikayeler'
-                        ? `Tüm ${navigation.series.title} hikâyeleri`
-                        : `Tüm ${navigation.series.title} serisi`}
+                      Tüm {navigation.series.title} serisi
                     </Link>
                   </div>
                 </nav>
               </div>
-            )
-          : (writing.group === 'denemeler' || writing.group === 'hikayeler') &&
+            ))
+          : writing.group === 'denemeler' &&
             (navigation.previous || navigation.next) && (
               <div data-nosnippet=''>
                 <nav className='border-ink/8 flex max-w-[680px] flex-col gap-5 border-t pt-8 md:flex-row md:items-start md:justify-between'>

@@ -174,6 +174,31 @@ section[id]:target > h2 {
   @apply my-6 list-disc space-y-2 pl-6;
 }
 
+.writing-story {
+  @apply mt-14 mb-16 max-w-[640px] md:mt-16 md:mb-20;
+}
+
+.writing-story p,
+.writing-story li {
+  @apply text-ink/85 text-base leading-[1.85]! md:text-[1.0625rem]!;
+}
+
+.writing-story p {
+  @apply m-0;
+}
+
+.writing-story p + p {
+  @apply mt-[1.05rem];
+}
+
+.writing-story h2 {
+  @apply mt-16 mb-6 text-[1.45rem]! md:mt-20 md:text-[1.75rem]!;
+}
+
+.writing-story ul {
+  @apply my-6 list-disc space-y-2 pl-6;
+}
+
 /* Footer signature line */
 .footer-note {
   font-family: Georgia, serif;

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ArenaStoryIndex from '@/app/components/ArenaStoryIndex';
 import Footer from '@/app/components/Footer';
 import { getWritingSeries } from '@/lib/writing/registry';
 import { buildWritingSeriesJsonLd, siteName, siteUrl } from '@/lib/seo';
@@ -87,22 +88,7 @@ export default function Arena() {
         </header>
 
         <section aria-label={`${arenaSeries.title} hikâyeleri`} className='mt-12 max-w-[620px] md:mt-16'>
-          <ol className='space-y-7 md:space-y-8'>
-            {arenaStories.map((story) => (
-              <li key={story.slug}>
-                <article>
-                  <h2 className='mb-1.5'>
-                    <Link href={getStoryHref(story)} className='text-ink hover:text-ink/70 no-underline'>
-                      {story.title}
-                    </Link>
-                  </h2>
-                  <p className='text-ink/70! mb-1.5 text-sm!'>
-                    {arenaSeries.title} · {story.position} · <time dateTime={story.date}>{story.displayDate}</time>
-                  </p>
-                </article>
-              </li>
-            ))}
-          </ol>
+          <ArenaStoryIndex stories={arenaStories} />
         </section>
       </section>
 

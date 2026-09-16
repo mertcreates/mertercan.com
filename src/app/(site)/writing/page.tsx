@@ -1,25 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ArenaStoryIndex from '@/app/components/ArenaStoryIndex';
 import Footer from '@/app/components/Footer';
 import WritingSectionNav from '@/app/components/WritingSectionNav';
 import { buildWritingJsonLd, siteName, siteUrl } from '@/lib/seo';
-import {
-  getArticleWritings,
-  getPoemWritings,
-  getStoryWritings,
-  getWritingKicker,
-  getWritingSeries,
-} from '@/lib/writing/registry';
+import { getArticleWritings, getPoemWritings, getWritingKicker, getWritingSeries } from '@/lib/writing/registry';
 
 const description =
   'Notes, poems, essays, stories, and small conversations I want to keep somewhere quieter than the feed.';
-const stories = getStoryWritings();
 const arenaSeries = getWritingSeries('arena');
 const denemelerSeries = getWritingSeries('denemeler');
 const poems = getPoemWritings();
 const talks = getArticleWritings();
 const writingJsonLd = buildWritingJsonLd({
-  entries: [...denemelerSeries.entries, ...stories, ...poems, ...talks],
+  entries: [...denemelerSeries.entries, ...arenaSeries.entries, ...poems, ...talks],
   description,
   series: [denemelerSeries, arenaSeries],
 });
@@ -104,22 +98,9 @@ export default function Writing() {
               {arenaSeries.title}
             </Link>
           </h2>
-          <p className='text-ink/70 mb-10 max-w-[58ch]'>{arenaSeries.description}</p>
+          <p className='text-ink/70 mb-8 max-w-[58ch]'>{arenaSeries.description}</p>
 
-          <div className='space-y-7 md:space-y-8'>
-            {arenaSeries.entries.map((story) => (
-              <article key={story.slug}>
-                <p className='text-ink/70! mb-1.5 text-sm!'>
-                  {getWritingKicker(story)} · <time dateTime={story.date}>{story.displayDate}</time>
-                </p>
-                <h3 className='mb-1.5'>
-                  <Link href={`/writing/${story.path.join('/')}`} className='text-ink hover:text-ink/70 no-underline'>
-                    {story.title}
-                  </Link>
-                </h3>
-              </article>
-            ))}
-          </div>
+          <ArenaStoryIndex stories={arenaSeries.entries} headingLevel='h3' />
         </section>
 
         <section
