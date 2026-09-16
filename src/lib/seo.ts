@@ -262,7 +262,7 @@ function buildWritingSeriesProjection(series: WritingSeries): WritingSeriesJsonL
     '@id': ids.series,
     name: series.title,
     url: ids.url,
-    description: series.description,
+    description: series.seoDescription,
     inLanguage: series.inLanguage,
     author: {
       '@id': personId,
@@ -350,7 +350,7 @@ export function buildWritingSeriesJsonLd(series: WritingSeries): { '@context': s
         '@id': projection.ids.page,
         url: projection.ids.url,
         name: series.title,
-        description: series.description,
+        description: series.seoDescription,
         inLanguage: series.inLanguage,
         isPartOf: {
           '@id': websiteId,
@@ -434,6 +434,7 @@ export function buildWritingEntryJsonLd(writing: WritingEntry): { '@context': st
       buildBreadcrumbJsonLd([
         { name: 'Home', url: siteUrl },
         { name: 'Writing', url: `${siteUrl}/writing` },
+        ...(series ? [{ name: series.title, url: `${siteUrl}${series.hubPath}` }] : []),
         { name: writing.title, url: writingUrl },
       ]),
       writingNode,

@@ -29,7 +29,7 @@ function getStoryHref(story: ArenaStory): string {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: arenaSeries.title,
-  description: arenaSeries.description,
+  description: arenaSeries.seoDescription,
   alternates: {
     canonical: arenaSeries.hubPath,
     types: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: `${arenaSeries.title} — ${siteName}`,
-    description: arenaSeries.description,
+    description: arenaSeries.seoDescription,
     url: arenaSeries.hubPath,
     siteName,
     locale: 'tr_TR',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `${arenaSeries.title} — ${siteName}`,
-    description: arenaSeries.description,
+    description: arenaSeries.seoDescription,
     creator: '@Mert_Ercan',
     images: ['/opengraph-image'],
   },

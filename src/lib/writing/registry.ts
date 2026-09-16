@@ -13,6 +13,7 @@ type WritingSeriesDefinitionFields = Readonly<{
   slug: string;
   title: string;
   description: string;
+  seoDescription: string;
   hubPath: `/${string}`;
   inLanguage: string;
 }>;
@@ -21,7 +22,9 @@ const writingSeriesDefinitions = {
   arena: {
     slug: 'arena',
     title: 'Arena',
-    description: 'Devam eden bir kısa hikâye serisi.',
+    description: 'Yağmurla birbirine bağlanan kısa hikâyeler. Seri yeni hikâyelerle devam ediyor.',
+    seoDescription:
+      "Arena, Mert Ercan'ın yağmurla birbirine bağlanan insan hikâyelerinden oluşan Türkçe kısa hikâye serisi. Baştan başlayıp sırayla okuyabilirsiniz.",
     hubPath: '/arena',
     inLanguage: 'tr',
   },
@@ -29,6 +32,8 @@ const writingSeriesDefinitions = {
     slug: 'denemeler',
     title: 'Denemeler',
     description:
+      'Bu serinin ilk beş denemesini yazarlığa giriş eğitimleri sırasında karaladım: düşünce, ölüm, özgecilik, insan doğası ve dostluk. Zamanla bunlara anlaşılmak, güvenmek, sorumluluk, sağlıklı sınırlar ve öznellik üzerine dört yeni diyalog eklendi.',
+    seoDescription:
       'Bu serinin ilk beş denemesini yazarlığa giriş eğitimleri sırasında karaladım: düşünce, ölüm, özgecilik, insan doğası ve dostluk. Zamanla bunlara anlaşılmak, güvenmek, sorumluluk, sağlıklı sınırlar ve öznellik üzerine dört yeni diyalog eklendi.',
     hubPath: '/writing#denemeler',
     inLanguage: 'tr',
@@ -161,10 +166,12 @@ function getWritingDescriptionMetadata(data: Record<string, unknown>, filePath: 
   };
 }
 
-function rejectStoryDescriptionMetadata(data: Record<string, unknown>, filePath: string): void {
-  if (data.description !== undefined || data.seoDescription !== undefined) {
-    throw new Error(`${filePath}: stories use generated spoiler-free metadata; remove description and seoDescription.`);
+function getStorySeoDescription(data: Record<string, unknown>, filePath: string): string {
+  if (data.description !== undefined) {
+    throw new Error(`${filePath}: stories do not use a visible description; remove description.`);
   }
+
+  return requiredString(data.seoDescription, 'seoDescription', filePath);
 }
 
 function optionalWritingSeries(value: unknown, filePath: string): WritingSeriesSlug | undefined {
@@ -294,13 +301,9 @@ function loadWriting(relativeFilePath: string): WritingEntry {
       throw new Error(`${relativeFilePath}: story series must use the arena series.`);
     }
 
-    rejectStoryDescriptionMetadata(data, relativeFilePath);
-
     return {
       ...common,
-      seoDescription: series
-        ? `Mert Ercan’ın devam eden kısa hikâye serisinin ${position}. hikâyesi: “${common.title}”.`
-        : `${position}. kısa hikâye.`,
+      seoDescription: getStorySeoDescription(data, relativeFilePath),
       group,
       format,
       kind: `${position}. hikâye`,

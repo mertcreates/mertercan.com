@@ -45,7 +45,7 @@ export function GET(): Response {
     <title>${escapeXml(arenaSeries.title)} — ${escapeXml(siteName)}</title>
     <link>${escapeXml(`${siteUrl}${arenaSeries.hubPath}`)}</link>
     <atom:link href="${escapeXml(feedUrl)}" rel="self" type="application/rss+xml" />
-    <description>${escapeXml(arenaSeries.description)}</description>
+    <description>${escapeXml(arenaSeries.seoDescription)}</description>
     <language>${escapeXml(arenaSeries.inLanguage)}-${escapeXml(arenaSeries.inLanguage.toUpperCase())}</language>
     ${lastBuildDate}
     ${items}
