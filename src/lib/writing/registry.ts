@@ -22,9 +22,9 @@ const writingSeriesDefinitions = {
   arena: {
     slug: 'arena',
     title: 'Arena',
-    description: 'Yağmurla birbirine bağlanan kısa hikâyeler. Seri yeni hikâyelerle devam ediyor.',
+    description: 'Bir insana yeterince uzaktan bakarsan rolünü görürsün. Biraz yaklaşırsan hikâyesini.',
     seoDescription:
-      "Arena, Mert Ercan'ın yağmurla birbirine bağlanan insan hikâyelerinden oluşan Türkçe kısa hikâye serisi. Baştan başlayıp sırayla okuyabilirsiniz.",
+      "Arena, uzaktan bakınca görünen rollerin, yaklaştıkça açılan hikâyelerin izini süren Mert Ercan'ın Türkçe kısa hikâye serisi.",
     hubPath: '/arena',
     inLanguage: 'tr',
   },
