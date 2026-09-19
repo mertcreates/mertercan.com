@@ -147,6 +147,10 @@ const entries: Entry[] = [
         text: 'Arena continued with a thirty-third story about a café conversation, two notebooks, and dreams told across the table.',
         relatedLink: { href: '/writing/hikayeler/arena-xxxiii-borc', label: 'Arena XXXIII — Borç' },
       },
+      {
+        text: 'Arena continued with a thirty-fourth story about a nurse nearing the end of a shift and a quiet hospital room in the rain.',
+        relatedLink: { href: '/writing/hikayeler/arena-xxxiv-nobet', label: 'Arena XXXIV — Nöbet' },
+      },
     ],
   },
   {
