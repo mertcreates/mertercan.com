@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ArenaContinueReading from '@/app/components/ArenaContinueReading';
 import ArenaStoryIndex from '@/app/components/ArenaStoryIndex';
 import Footer from '@/app/components/Footer';
 import { getWritingSeries } from '@/lib/writing/registry';
@@ -11,20 +12,22 @@ const arenaJsonLd = buildWritingSeriesJsonLd(arenaSeries);
 
 type ArenaStory = (typeof arenaStories)[number];
 
-function requireArenaStory(story: ArenaStory | undefined): ArenaStory {
-  if (!story) {
-    throw new Error('Arena series must contain at least one story.');
-  }
-
-  return story;
-}
-
-const firstStory = requireArenaStory(arenaStories[0]);
-const latestStory = requireArenaStory(arenaStories.at(-1));
-
 function getStoryHref(story: ArenaStory): string {
   return `/writing/${story.path.join('/')}`;
 }
+
+const latestStory = arenaStories.at(-1);
+
+if (!latestStory) {
+  throw new Error('Arena series must contain at least one story.');
+}
+
+const latestStoryHref = getStoryHref(latestStory);
+
+const continuationStories = arenaStories.map((story) => ({
+  slug: story.slug,
+  href: getStoryHref(story),
+}));
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -43,21 +46,12 @@ export const metadata: Metadata = {
     siteName,
     locale: 'tr_TR',
     type: 'website',
-    images: [
-      {
-        url: '/opengraph-image',
-        width: 1200,
-        height: 630,
-        alt: 'Mert Ercan — frontend developer',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${arenaSeries.title} — ${siteName}`,
     description: arenaSeries.seoDescription,
     creator: '@Mert_Ercan',
-    images: ['/opengraph-image'],
   },
 };
 
@@ -78,10 +72,8 @@ export default function Arena() {
           <p className='text-ink/70 mt-3 text-sm!'>{arenaStories.length} hikâye</p>
 
           <nav aria-label={`${arenaSeries.title} bağlantıları`} className='mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm'>
-            <Link href={getStoryHref(firstStory)} className='text-ink hover:text-ink/70 font-medium no-underline'>
-              Seriye başla →
-            </Link>
-            <Link href={getStoryHref(latestStory)} className='text-ink/70 hover:text-ink no-underline'>
+            <ArenaContinueReading stories={continuationStories} />
+            <Link href={latestStoryHref} className='text-ink/70 hover:text-ink no-underline'>
               En yeni hikâye →
             </Link>
           </nav>

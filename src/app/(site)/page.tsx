@@ -2,11 +2,30 @@ import Link from 'next/link';
 import Footer from '@/app/components/Footer';
 import Hero from '@/app/components/Hero';
 import Section from '@/app/components/Section';
+import { getProjectBySlug } from '@/data/projects';
 import { buildHomeJsonLd } from '@/lib/seo';
 import { getWritingByPath, getWritingSeries } from '@/lib/writing/registry';
 
 const jsonLd = buildHomeJsonLd();
 const arenaSeries = getWritingSeries('arena');
+
+const selectedProjects = [
+  { slug: 'bugjar' },
+  { slug: 'dizgi' },
+  { slug: 'steam-library-manager', showYear: true },
+  { slug: 'haklisin' },
+  { slug: 'kombin' },
+  { slug: 'project-canon' },
+  { slug: 'eslint-next-pages-router' },
+].map((selection) => {
+  const project = getProjectBySlug(selection.slug);
+
+  if (!project) {
+    throw new Error(`Selected project not found: ${selection.slug}`);
+  }
+
+  return { project, showYear: selection.showYear ?? false };
+});
 
 const selectedWritings = [
   ['siirler', 'tedbir'],
@@ -159,77 +178,18 @@ export default function Home() {
 
       <Section title='Selected Work'>
         <div className='max-w-lg space-y-8 md:space-y-10'>
-          <div>
-            <h3 className='mb-3 flex items-center gap-2'>
-              <Link href='/making/bugjar' className='text-ink hover:text-ink/70 no-underline'>
-                BugJar
-              </Link>
-            </h3>
-            <p>A local-first browser session recorder that preserves what happened within a scope the user defines.</p>
-          </div>
-
-          <div>
-            <h3 className='mb-3 flex items-center gap-2'>
-              <Link href='/making/dizgi' className='text-ink hover:text-ink/70 no-underline'>
-                Dizgi
-              </Link>
-            </h3>
-            <p>
-              A writing tool that turns long-form text into carefully paginated images and PDFs without rewriting the
-              words.
-            </p>
-          </div>
-
-          <div>
-            <h3 className='mb-3 flex flex-wrap items-center gap-2'>
-              <Link href='/making/steam-library-manager' className='text-ink hover:text-ink/70 no-underline'>
-                Steam Library Manager
-              </Link>
-              <span className='text-ink/70 text-sm font-normal'>2015–2025</span>
-            </h3>
-            <p>A game library utility born from one friend&apos;s repeated trips between home and university.</p>
-          </div>
-
-          <div>
-            <h3 className='mb-3 flex items-center gap-2'>
-              <Link href='/making/haklisin' className='text-ink hover:text-ink/70 no-underline'>
-                Haklısın!
-              </Link>
-            </h3>
-            <p>A small ritual for turning everyday &quot;haklısın&quot; moments into a shared jar of symbolic coins.</p>
-          </div>
-
-          <div>
-            <h3 className='mb-3 flex items-center gap-2'>
-              <Link href='/making/kombin' className='text-ink hover:text-ink/70 no-underline'>
-                Kombin.dev
-              </Link>
-              <span className='text-ink/70 text-sm font-normal'>private</span>
-            </h3>
-            <p>
-              A personal wardrobe system that builds and evaluates outfits from the clothes already there, without
-              reducing the decision to a single score.
-            </p>
-          </div>
-
-          <div>
-            <h3 className='mb-3 flex items-center gap-2'>
-              <Link href='/making/project-canon' className='text-ink hover:text-ink/70 no-underline'>
-                Project Canon
-              </Link>
-              <span className='text-ink/70 text-sm font-normal'>private</span>
-            </h3>
-            <p>A private system for keeping character work coherent, movable, and ready to publish.</p>
-          </div>
-
-          <div>
-            <h3 className='mb-3 flex items-center gap-2'>
-              <Link href='/making/eslint-next-pages-router' className='text-ink hover:text-ink/70 no-underline'>
-                eslint-plugin-next-pages-router
-              </Link>
-            </h3>
-            <p>An ESLint plugin that catches invalid Pages Router routes before they reach the browser.</p>
-          </div>
+          {selectedProjects.map(({ project, showYear }) => (
+            <div key={project.slug}>
+              <h3 className={`mb-3 flex items-center gap-2${showYear ? ' flex-wrap' : ''}`}>
+                <Link href={`/making/${project.slug}`} className='text-ink hover:text-ink/70 no-underline'>
+                  {project.title}
+                </Link>
+                {showYear && <span className='text-ink/70 text-sm font-normal'>{project.year}</span>}
+                {project.status === 'private build' && <span className='text-ink/70 text-sm font-normal'>private</span>}
+              </h3>
+              <p>{project.homeSummary ?? project.context}</p>
+            </div>
+          ))}
         </div>
       </Section>
 

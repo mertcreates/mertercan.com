@@ -1,0 +1,20 @@
+/opengraph-image
+  Content-Type: image/png
+
+/making/opengraph-image*
+  Content-Type: image/png
+
+/social-cards/making/*
+  Content-Type: image/png
+
+/writing/opengraph-image*
+  Content-Type: image/png
+
+/social-cards/writing/*
+  Content-Type: image/png
+
+/life/opengraph-image*
+  Content-Type: image/png
+
+/arena/opengraph-image*
+  Content-Type: image/png

@@ -1,15 +1,14 @@
 import { renderSocialCard, socialCardContentType, socialCardSize } from '@/app/components/SocialCard';
 
 export const dynamic = 'force-static';
-
-export const alt = 'Mert Ercan — frontend developer';
+export const alt = 'Writing — Mert Ercan';
 export const size = socialCardSize;
 export const contentType = socialCardContentType;
 
-export default function OpengraphImage() {
+export default function WritingOpengraphImage() {
   return renderSocialCard({
-    eyebrow: 'Frontend developer',
-    title: 'Mert Ercan',
-    detail: 'Frontend developer exploring how small things grow into meaning.',
+    eyebrow: 'Writing',
+    title: 'Writing',
+    detail: 'Notes, poems, essays, stories, and small conversations I want to keep somewhere quieter than the feed.',
   });
 }

@@ -41,10 +41,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: '/opengraph-image',
+          url: `/social-cards/making/${project.slug}`,
           width: 1200,
           height: 630,
-          alt: 'Mert Ercan — frontend developer',
+          alt: `${project.title} — Mert Ercan`,
         },
       ],
     },
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${project.title} — Mert Ercan`,
       description,
       creator: '@Mert_Ercan',
-      images: ['/opengraph-image'],
+      images: [{ url: `/social-cards/making/${project.slug}`, alt: `${project.title} — Mert Ercan` }],
     },
   };
 }

@@ -7,6 +7,7 @@ export type Project = {
   slug: string;
   title: string;
   context: string;
+  homeSummary?: string;
   metaDescription?: string;
   year: string;
   publishedAt?: string;
@@ -151,6 +152,7 @@ export const projects = [
     slug: 'project-canon',
     title: 'Project Canon',
     context: 'A private system for keeping character work coherent from first idea through review and publishing.',
+    homeSummary: 'A private system for keeping character work coherent, movable, and ready to publish.',
     metaDescription:
       'Project Canon is a private creative system by Mert Ercan for preserving continuity across character ideation, review, and publishing.',
     year: '2026',
@@ -179,6 +181,7 @@ export const projects = [
     title: 'Steam Library Manager',
     context:
       'A Windows utility for moving and maintaining game libraries, built around one friend’s repeated trips between home and university.',
+    homeSummary: 'A game library utility born from one friend’s repeated trips between home and university.',
     metaDescription:
       'Steam Library Manager is an open-source Windows utility by Mert Ercan for moving, restoring, and maintaining game libraries.',
     year: '2015–2025',

@@ -8,6 +8,16 @@ type ArenaReadingProgress = {
   readStorySlugs: string[];
 };
 
+export type ArenaContinuationStory = {
+  slug: string;
+  href: string;
+};
+
+type ArenaContinuation = {
+  state: 'start' | 'continue' | 'restart';
+  target: ArenaContinuationStory;
+};
+
 export function parseArenaReadingProgress(value: string | null): Set<string> {
   if (!value) {
     return new Set();
@@ -36,6 +46,28 @@ export function readArenaReadingProgress(): Set<string> {
   } catch {
     return new Set();
   }
+}
+
+export function selectArenaContinuation(
+  stories: readonly ArenaContinuationStory[],
+  readStorySlugs: ReadonlySet<string>
+): ArenaContinuation | undefined {
+  const firstStory = stories[0];
+
+  if (!firstStory) {
+    return undefined;
+  }
+
+  const firstUnreadIndex = stories.findIndex((story) => !readStorySlugs.has(story.slug));
+
+  if (firstUnreadIndex === -1) {
+    return { state: 'restart', target: firstStory };
+  }
+
+  return {
+    state: firstUnreadIndex === 0 ? 'start' : 'continue',
+    target: stories[firstUnreadIndex],
+  };
 }
 
 export function markArenaStoryAsRead(slug: string): void {

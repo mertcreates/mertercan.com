@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = getWritingSeoDescription(writing);
   const title = getWritingMetadataTitle(writing);
   const writingUrl = getWritingEntryUrl(writing);
+  const socialCardUrl = `/social-cards/writing/${writing.path.join('/')}`;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -68,10 +69,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: writing.siteAddedAt,
       images: [
         {
-          url: '/opengraph-image',
+          url: socialCardUrl,
           width: 1200,
           height: 630,
-          alt: 'Mert Ercan — frontend developer',
+          alt: `${writing.title} — Mert Ercan`,
         },
       ],
     },
@@ -80,7 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${title} — ${siteName}`,
       description,
       creator: '@Mert_Ercan',
-      images: ['/opengraph-image'],
+      images: [{ url: socialCardUrl, alt: `${writing.title} — Mert Ercan` }],
     },
   };
 }
