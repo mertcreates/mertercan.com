@@ -1,6 +1,7 @@
 export type ProjectStatus = 'live' | 'in progress' | 'private build' | 'paused' | 'maintenance' | 'archived';
 export type ProjectKind = 'product' | 'tool' | 'creative' | 'system';
 export type ProjectSchemaType = 'SoftwareApplication' | 'WebApplication' | 'SoftwareSourceCode' | 'CreativeWork';
+export type ProjectLinkKind = 'website' | 'github' | 'npm' | 'release' | 'benchmark';
 
 export type Project = {
   slug: string;
@@ -10,10 +11,10 @@ export type Project = {
   year: string;
   publishedAt?: string;
   updatedAt: string;
+  pageReviewedAt: string;
   type: string;
   status: ProjectStatus;
   schemaType: ProjectSchemaType;
-  role?: string;
   group: 'larger' | 'small';
   kind: ProjectKind;
   story: string[];
@@ -22,9 +23,10 @@ export type Project = {
     alt: string;
     caption?: string;
   };
-  reflections: string[];
-  proofPoints?: string[];
+  howItWorks: string[];
+  facts?: string[];
   links?: {
+    kind: ProjectLinkKind;
     label: string;
     href: string;
   }[];
@@ -39,11 +41,11 @@ export const projects = [
     metaDescription:
       'BugJar is a browser extension by Mert Ercan for recording scoped browser sessions locally, without background telemetry or cloud uploads.',
     year: '2026',
-    updatedAt: '2026-06-26',
+    updatedAt: '2026-09-06',
+    pageReviewedAt: '2026-09-20',
     type: 'Browser extension',
     status: 'in progress',
     schemaType: 'SoftwareApplication',
-    role: 'Product direction and development',
     group: 'larger',
     kind: 'product',
     story: [
@@ -51,15 +53,12 @@ export const projects = [
       'The recorder only runs where the user allows it to. Sessions stay on the local machine unless they are deliberately exported; there is no background telemetry or cloud upload built into the recording flow.',
       'The harder problem was not capture alone, but trust. Every boundary had to remain visible: where recording can happen, when it is active, and what is allowed to leave the device.',
     ],
-    reflections: [
-      'Trust grows when a tool behaves consistently and makes its limits visible.',
-      'Data sovereignty means little unless the architecture enforces it.',
+    howItWorks: [
+      'The user defines the domains, paths, and URL patterns where recording is allowed; capture stays inside that scope.',
+      'DOM changes, network requests, console logs, and user interactions are recorded as separate channels in one ordered session.',
+      'Sessions remain in local browser storage for replay and leave the device only through an explicit export.',
     ],
-    proofPoints: [
-      'A capture preserves console logs, network activity, DOM changes, and the sequence that led to an issue.',
-      'Recordings stay on the device unless the user explicitly exports them.',
-    ],
-    links: [{ label: 'bugjar.dev', href: 'https://bugjar.dev' }],
+    links: [{ kind: 'website', label: 'official product site', href: 'https://bugjar.dev' }],
     tags: ['extension', 'architecture', 'tooling'],
   },
   {
@@ -71,11 +70,11 @@ export const projects = [
       'Dizgi is a browser-based writing tool by Mert Ercan for turning long-form text into carefully paginated, shareable images and PDFs.',
     year: '2026',
     publishedAt: '2026-07-04',
-    updatedAt: '2026-07-05',
+    updatedAt: '2026-09-19',
+    pageReviewedAt: '2026-09-20',
     type: 'Writing and export tool',
     status: 'live',
     schemaType: 'WebApplication',
-    role: 'Concept, product design, and development',
     group: 'larger',
     kind: 'tool',
     story: [
@@ -83,18 +82,12 @@ export const projects = [
       'I built the first usable version in a day around a simple boundary: the tool should shape the text, not rewrite it. Dizgi measures the rendered layout, flows writing across pages, respects intentional page breaks, and updates the result as the format, typography, spacing, and background change.',
       'The finished pages can be previewed and exported as images or a PDF. The aim is not to turn writing into content strategy, but to make the original words easier to read, share, and keep.',
     ],
-    reflections: [
-      'Formatting can support a voice without becoming another voice.',
-      'Automatic layout is most useful when the writer can still decide where a page should end.',
-      'A small reading friction can become a useful tool once it is made visible.',
+    howItWorks: [
+      'Dizgi measures the rendered text and flows it across pages instead of estimating page breaks from a fixed character count.',
+      'Writers can combine automatic pagination with intentional page breaks, then adjust format, typography, spacing, and background in a live preview.',
+      'The browser produces vertical, square, or story-sized pages that can be exported as PNG images or a PDF.',
     ],
-    proofPoints: [
-      'Pagination responds to the rendered layout rather than relying on a fixed character count.',
-      'Writers can combine automatic flow with intentional page breaks and adjust format, typography, spacing, and background before exporting.',
-      'Pages can be previewed and exported individually or together as images and a PDF.',
-      'Dizgi preserves the source text instead of rewriting it or adding hooks, summaries, and calls to action.',
-    ],
-    links: [{ label: 'dizgi.app', href: 'https://dizgi.app' }],
+    links: [{ kind: 'website', label: 'official product site', href: 'https://dizgi.app' }],
     tags: ['writing', 'pagination', 'typography'],
   },
   {
@@ -105,11 +98,11 @@ export const projects = [
     metaDescription:
       'Haklısın! is a small web ritual by Mert Ercan for keeping everyday "haklısın" moments as symbolic coins in a personal digital jar.',
     year: '2026',
-    updatedAt: '2026-06-26',
+    updatedAt: '2026-09-19',
+    pageReviewedAt: '2026-09-20',
     type: 'Digital ritual',
     status: 'live',
     schemaType: 'WebApplication',
-    role: 'Concept and development',
     group: 'larger',
     kind: 'product',
     story: [
@@ -117,15 +110,12 @@ export const projects = [
       'Each moment becomes a symbolic coin in a personal digital jar. The count is part of the joke; the point is to give a passing "I told you so" somewhere to stay.',
       'Building it reminded me that software can be carefully made without becoming serious. Sometimes a tiny absurdity only needs enough structure to turn into a ritual.',
     ],
-    reflections: [
-      'Play needs structure too; the joke works because the product stays light.',
-      'A ritual gives a passing moment somewhere to remain.',
-      'Not every product has to solve a large problem. Some only need to preserve a small, shared feeling.',
+    howItWorks: [
+      'Each signed-in user has a personal jar for the moments they decide to record.',
+      'The user chooses what one moment is worth and gives that unit its own name and symbol.',
+      'When a moment is acknowledged, it is added to the jar as a dated symbolic entry that can be revisited later.',
     ],
-    proofPoints: [
-      'Each moment becomes a symbolic coin in the user’s own jar, with the unit and symbol left for them to choose.',
-    ],
-    links: [{ label: 'haklisin.app', href: 'https://haklisin.app' }],
+    links: [{ kind: 'website', label: 'official product site', href: 'https://haklisin.app' }],
     tags: ['digital ritual', 'fun', 'product'],
   },
   {
@@ -136,11 +126,11 @@ export const projects = [
     metaDescription:
       'Kombin.dev is a private wardrobe and outfit-planning system by Mert Ercan that evaluates real combinations across technical harmony, daily practicality, context, and perceived impact.',
     year: '2026',
-    updatedAt: '2026-06-26',
+    updatedAt: '2026-08-27',
+    pageReviewedAt: '2026-09-20',
     type: 'Wardrobe and outfit system',
     status: 'private build',
     schemaType: 'WebApplication',
-    role: 'Concept, system design, and development',
     group: 'larger',
     kind: 'product',
     story: [
@@ -149,17 +139,12 @@ export const projects = [
       'The central distinction is between what belongs to the outfit and what belongs to the day. Color, silhouette, and seasonal construction form the technical reading; weather, comfort, context, repeat history, and carrying needs refine the recommendation without rewriting that foundation.',
       'The system can suggest and explain, but it cannot invent a missing piece or collapse taste into one final verdict. The trade-offs become visible; the choice remains personal.',
     ],
-    reflections: [
-      'A useful recommendation is not a verdict. It is a clearer view of the trade-offs.',
-      'The same outfit can remain technically strong while becoming impractical for a particular day.',
-      'Taste stays personal even when the reasoning around it becomes structured.',
+    howItWorks: [
+      'Candidate outfits are assembled only from items already recorded in the wardrobe.',
+      'Each combination keeps technical harmony, daily practicality, contextual fit, and perceived impact as separate readings rather than collapsing them into one verdict.',
+      'Weather, the day’s context, and recent outfit history refine the recommendation, while saved outfits retain their pieces, reasoning, scores, and styling notes.',
     ],
-    proofPoints: [
-      'Suggestions use only items already present in the wardrobe; missing pieces, colors, and accessories are never invented.',
-      'Each outfit is evaluated separately for technical harmony, real-life practicality, contextual fit, and the impression it creates from the outside.',
-      'Saved outfits keep their pieces, score breakdown, reasoning, color summary, and styling notes together in one readable record.',
-    ],
-    links: [{ label: 'kombin.dev', href: 'https://kombin.dev' }],
+    links: [{ kind: 'website', label: 'official project site', href: 'https://kombin.dev' }],
     tags: ['wardrobe', 'outfit planning', 'analysis'],
   },
   {
@@ -170,10 +155,10 @@ export const projects = [
       'Project Canon is a private creative system by Mert Ercan for preserving continuity across character ideation, review, and publishing.',
     year: '2026',
     updatedAt: '2026-06-26',
+    pageReviewedAt: '2026-09-20',
     type: 'System',
     status: 'private build',
     schemaType: 'CreativeWork',
-    role: 'System design and creative direction',
     group: 'larger',
     kind: 'system',
     story: [
@@ -181,13 +166,10 @@ export const projects = [
       'The system brings those parts into one workflow. It keeps character history close, helps new directions remain consistent, and moves approved concepts into a clear review and publishing path.',
       'AI is present as a working layer, not the identity of the project. The system does not replace judgment; it keeps repetitive work from obscuring it.',
     ],
-    reflections: [
-      'Creative work becomes lighter when memory is reliable.',
-      'A good system removes friction without quietly taking over the decisions.',
-      'AI is most useful here when it supports the work without becoming the point.',
-    ],
-    proofPoints: [
-      'Character history, prompts, review, and publishing sit in one workflow, making continuity easier to preserve.',
+    howItWorks: [
+      'Character history, approved references, prompts, and revisions stay together as one continuity record.',
+      'New directions are reviewed against that record before they become part of the character’s accepted history.',
+      'Approved concepts move through a defined review and publishing path while creative judgment remains with the author.',
     ],
     links: [],
     tags: ['memory', 'workflow', 'publishing'],
@@ -200,11 +182,11 @@ export const projects = [
     metaDescription:
       'Steam Library Manager is an open-source Windows utility by Mert Ercan for moving, restoring, and maintaining game libraries.',
     year: '2015–2025',
-    updatedAt: '2026-06-26',
+    updatedAt: '2025-07-13',
+    pageReviewedAt: '2026-09-20',
     type: 'Open source desktop utility',
     status: 'maintenance',
     schemaType: 'SoftwareApplication',
-    role: 'Creator and maintainer',
     group: 'larger',
     kind: 'tool',
     story: [
@@ -214,22 +196,23 @@ export const projects = [
       'What began as a tool for one friend became a public open-source project shaped by years of issues, requests, and real use. It grew through more than fifty releases, hundreds of stars, and a decade of maintenance.',
       'SLM is no longer under active feature development. The repository and releases remain available, and I still return when an important compatibility or safety fix needs attention.',
     ],
-    reflections: [
-      'I did not begin with a user segment. I began with one friend and a workaround that kept repeating.',
-      'A small personal friction can travel much further once the structure around it becomes useful.',
-      'Once people rely on a tool, maintenance becomes part of the product.',
+    howItWorks: [
+      'Installed games and backups are represented as libraries that can be moved between drives without rebuilding each installation from scratch.',
+      'Transfers, updates, restores, compression, cleanup, and queued tasks are managed from one Windows application.',
+      'The same library model expanded beyond Steam to support Origin and Uplay while preserving Workshop and mod data where applicable.',
     ],
-    proofPoints: [
-      'SLM grew from game transfers into open backups, mod preservation, compression, cleanup, localization, and support for multiple stores.',
-      'The public project has remained available through more than fifty releases and over a decade of fixes.',
+    facts: [
+      'The public repository had 52 GitHub releases and 637 stars when this page was reviewed on 20 September 2026.',
     ],
     links: [
       {
-        label: 'github',
+        kind: 'github',
+        label: 'source repository',
         href: 'https://github.com/mertcreates/Steam-Library-Manager',
       },
       {
-        label: 'latest release',
+        kind: 'release',
+        label: 'release archive',
         href: 'https://github.com/mertcreates/Steam-Library-Manager/releases/latest',
       },
     ],
@@ -242,11 +225,11 @@ export const projects = [
     metaDescription:
       'eslint-plugin-next-pages-router is an ESLint plugin by Mert Ercan for validating Next.js Pages Router routes against the project’s actual pages tree.',
     year: '2026',
-    updatedAt: '2026-06-26',
+    updatedAt: '2026-09-13',
+    pageReviewedAt: '2026-09-20',
     type: 'Open source tool',
     status: 'live',
     schemaType: 'SoftwareSourceCode',
-    role: 'Creator and maintainer',
     group: 'small',
     kind: 'tool',
     story: [
@@ -254,24 +237,32 @@ export const projects = [
       'The bug came from comparing the wrong Pages Router value. The difference between `route`, `pathname`, and `asPath` had stayed invisible until QA surfaced a mismatch in one of the navigation flows.',
       'Instead of adding another convention for the team to remember, I turned the distinction into an ESLint rule.',
       'The first version checked route comparisons and navigation calls against the actual `pages/` tree. Version 1.1 extended the same model to `next/link`, static `next.config.mjs` files, faster dynamic-route lookup, and more reliable cache invalidation.',
-      'In a real-project benchmark, the mixed rules averaged 2.26 ms of overhead across 80 files and a 48-route Pages Router tree.',
+      'Version 1.2.1 added conservative validation for definitely missing dynamic query parameters without reporting runtime-built query objects it cannot prove wrong.',
     ],
-    reflections: [
-      'Good tooling shortens the distance between a mistake and its correction.',
-      'Static checks are most helpful when they understand the shape of the project.',
+    howItWorks: [
+      'The plugin builds a route model from the project’s `pages/` tree, including static, dynamic, catch-all, and optional catch-all routes.',
+      'One rule checks comparisons against `route`, `pathname`, and `asPath`; the other checks `router.push`, `router.replace`, and `next/link` navigation targets.',
+      'Optional Next.js configuration support applies `basePath` and locales, while unresolved runtime values are left alone rather than guessed.',
     ],
-    proofPoints: [
-      'The rules validate route comparisons and navigation calls against the project’s actual `pages/` tree.',
-      'A real-project benchmark averaged 2.26 ms across 80 files and 48 routes.',
+    facts: [
+      'The published package is version 1.2.1 and supports ESLint 8–9, Node.js 16+, and Next.js 10+ projects using the Pages Router.',
+      'The verified 1.2.0–1.2.1 benchmark found overlapping timing ranges rather than a measurable speedup or regression; its fixture workload produced 150 additional missing-parameter diagnostics in 1.2.1.',
     ],
     links: [
       {
-        label: 'npm',
+        kind: 'npm',
+        label: 'npm package',
         href: 'https://npmjs.com/package/@mertcreates/eslint-plugin-next-pages-router',
       },
       {
-        label: 'github',
+        kind: 'github',
+        label: 'source repository',
         href: 'https://github.com/mertcreates/eslint-plugin-next-pages-router',
+      },
+      {
+        kind: 'benchmark',
+        label: 'benchmark methodology and results',
+        href: 'https://github.com/mertcreates/eslint-plugin-next-pages-router/blob/main/BENCHMARKS.md',
       },
     ],
     tags: ['eslint', 'next.js', 'routing'],
@@ -284,11 +275,11 @@ export const projects = [
     metaDescription:
       'eslint-plugin-mv3 is an ESLint plugin by Mert Ercan for catching Manifest V3 `executeScript` closure traps before runtime.',
     year: '2026',
-    updatedAt: '2026-06-26',
+    updatedAt: '2026-02-16',
+    pageReviewedAt: '2026-09-20',
     type: 'Open source tool',
     status: 'live',
     schemaType: 'SoftwareSourceCode',
-    role: 'Creator and maintainer',
     group: 'small',
     kind: 'tool',
     story: [
@@ -296,22 +287,30 @@ export const projects = [
       'I wrote the plugin to make that boundary visible before runtime. It rejects injected functions that depend on outer-scope values, requires parameters to travel through `args`, and keeps the call shape statically analyzable.',
       'It is a small tool for one sharp edge: not to make extension development feel clever, but to make a fragile runtime boundary easier to trust.',
     ],
-    reflections: [
-      'A linter can protect architecture, not just style.',
-      'The best checks are often the ones that make hidden boundaries visible.',
+    howItWorks: [
+      'The rule resolves the function passed to `chrome.scripting.executeScript` or `browser.scripting.executeScript` and verifies that it is local and self-contained.',
+      'Outer-scope captures and imported function references are rejected because those values do not survive function serialization.',
+      'Parameters must travel through a statically readable `args` array; dynamic call shapes that cannot be verified are rejected explicitly.',
     ],
-    proofPoints: [
-      'The rule catches injected functions that depend on values unavailable after serialization.',
-      'Parameters remain explicit through `args`, and call shapes the linter cannot verify are rejected.',
+    facts: [
+      'The published package is version 1.0.0 and supports ESLint versions from 8.50.0 up to, but not including, 10.',
+      'The documented benchmark measured a 2.96 ms median net rule cost on a 4,999-line baseline and 16.19 ms on a 30,006-line mixed worst-case fixture.',
     ],
     links: [
       {
-        label: 'npm',
+        kind: 'npm',
+        label: 'npm package',
         href: 'https://npmjs.com/package/@mertcreates/eslint-plugin-mv3',
       },
       {
-        label: 'github',
+        kind: 'github',
+        label: 'source repository',
         href: 'https://github.com/mertcreates/eslint-plugin-mv3',
+      },
+      {
+        kind: 'benchmark',
+        label: 'benchmark methodology and results',
+        href: 'https://github.com/mertcreates/eslint-plugin-mv3/blob/main/BENCHMARK.md',
       },
     ],
     tags: ['eslint', 'mv3', 'extension'],

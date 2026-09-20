@@ -103,19 +103,23 @@ export function getProjectUrl(project: Project): string {
 
 export function buildProjectJsonLd(project: Project): { '@context': string; '@graph': JsonLdNode[] } {
   const projectUrl = getProjectUrl(project);
-  const githubLink = project.links?.find((link) => link.label.toLowerCase() === 'github');
-  const npmLink = project.links?.find((link) => link.label.toLowerCase() === 'npm');
-  const liveLinks =
-    project.links?.filter((link) => !['github', 'npm', 'latest release'].includes(link.label.toLowerCase())) ?? [];
+  const pageId = `${projectUrl}#page`;
+  const workId = `${projectUrl}#work`;
+  const githubLink = project.links?.find((link) => link.kind === 'github');
+  const npmLink = project.links?.find((link) => link.kind === 'npm');
+  const websiteLinks = project.links?.filter((link) => link.kind === 'website') ?? [];
 
   const projectNode: JsonLdNode = {
     '@type': project.schemaType,
-    '@id': `${projectUrl}#work`,
+    '@id': workId,
     name: project.title,
     description: getProjectDescription(project),
     url: projectUrl,
     creator: {
       '@id': personId,
+    },
+    mainEntityOfPage: {
+      '@id': pageId,
     },
     dateModified: project.updatedAt,
     keywords: project.tags,
@@ -132,7 +136,7 @@ export function buildProjectJsonLd(project: Project): { '@context': string; '@gr
   const sameAs =
     project.schemaType === 'SoftwareSourceCode'
       ? npmLink && [npmLink.href]
-      : liveLinks.length > 0 && liveLinks.map((link) => link.href);
+      : websiteLinks.length > 0 && websiteLinks.map((link) => link.href);
 
   if (sameAs) {
     projectNode.sameAs = sameAs;
@@ -146,6 +150,24 @@ export function buildProjectJsonLd(project: Project): { '@context': string; '@gr
         { name: 'Making', url: `${siteUrl}/making` },
         { name: project.title, url: projectUrl },
       ]),
+      {
+        '@type': 'WebPage',
+        '@id': pageId,
+        url: projectUrl,
+        name: `${project.title} — Mert Ercan`,
+        description: getProjectDescription(project),
+        dateModified: project.pageReviewedAt,
+        inLanguage: 'en',
+        isPartOf: {
+          '@id': websiteId,
+        },
+        author: {
+          '@id': personId,
+        },
+        mainEntity: {
+          '@id': workId,
+        },
+      },
       projectNode,
     ],
   };

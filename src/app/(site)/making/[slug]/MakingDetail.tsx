@@ -7,11 +7,18 @@ type Props = {
   project: Project;
 };
 
-export default function MakingDetail({ project }: Props) {
-  const details = [...(project.role ? [`Role: ${project.role}`] : []), ...(project.proofPoints ?? [])];
+function formatDate(date: string): string {
+  return new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${date}T00:00:00Z`));
+}
 
+export default function MakingDetail({ project }: Props) {
   return (
-    <section className='container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
+    <article className='container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
       {/* Back link */}
       <div className='mb-10 md:mb-14'>
         <Link href='/making' className='text-ink/70 hover:text-ink/85 text-sm no-underline transition-colors'>
@@ -34,19 +41,52 @@ export default function MakingDetail({ project }: Props) {
         {project.status}
       </p>
 
+      <p className='text-ink/70 -mt-12! mb-16 text-sm! md:-mt-16! md:mb-20'>
+        Created by{' '}
+        <Link href='/' rel='author' className='text-ink/80 hover:text-ink no-underline transition-colors'>
+          Mert Ercan
+        </Link>
+        <span className='mx-2 opacity-40' aria-hidden='true'>
+          ·
+        </span>
+        Project updated <time dateTime={project.updatedAt}>{formatDate(project.updatedAt)}</time>
+        <span className='mx-2 opacity-40' aria-hidden='true'>
+          ·
+        </span>
+        Page reviewed <time dateTime={project.pageReviewedAt}>{formatDate(project.pageReviewedAt)}</time>
+      </p>
+
       <StoryText paragraphs={project.story} />
 
-      {details.length > 0 && (
-        <div className='mb-14 max-w-[620px] md:mb-16'>
-          <h2 className='text-ink/70 mt-0! mb-4! text-sm! font-medium tracking-wide uppercase'>details</h2>
+      <section className='mb-14 max-w-[620px] md:mb-16' aria-labelledby='how-it-works-heading'>
+        <h2 id='how-it-works-heading' className='text-ink/70 mt-0! mb-4! text-sm! font-medium tracking-wide uppercase'>
+          how it works
+        </h2>
+        <ul className='space-y-2.5'>
+          {project.howItWorks.map((line) => (
+            <li key={line} className="before:text-ink/30 text-ink/70 list-none before:mr-3 before:content-['-']">
+              {line}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {project.facts && project.facts.length > 0 && (
+        <section className='mb-14 max-w-[620px] md:mb-16' aria-labelledby='project-facts-heading'>
+          <h2
+            id='project-facts-heading'
+            className='text-ink/70 mt-0! mb-4! text-sm! font-medium tracking-wide uppercase'
+          >
+            project facts
+          </h2>
           <ul className='space-y-2.5'>
-            {details.map((line) => (
+            {project.facts.map((line) => (
               <li key={line} className="before:text-ink/30 text-ink/70 list-none before:mr-3 before:content-['-']">
                 {line}
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       )}
 
       {/* Visual frame — optional */}
@@ -67,22 +107,15 @@ export default function MakingDetail({ project }: Props) {
         </figure>
       )}
 
-      {/* What changed / reflections */}
-      <div className='mb-14 max-w-[620px] md:mb-16'>
-        <h2 className='text-ink/70 mt-0! mb-4! text-sm! font-medium tracking-wide uppercase'>what changed</h2>
-        <ul className='space-y-2.5'>
-          {project.reflections.map((line, i) => (
-            <li key={i} className="before:text-ink/30 text-ink/70 list-none before:mr-3 before:content-['-']">
-              {line}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* External links — optional */}
+      {/* Official sources — optional */}
       {project.links && project.links.length > 0 && (
-        <div className='mb-12 max-w-[620px] md:mb-14'>
-          <h2 className='text-ink/70 mt-0! mb-3! text-sm! font-medium tracking-wide uppercase'>links</h2>
+        <section className='mb-12 max-w-[620px] md:mb-14' aria-labelledby='official-sources-heading'>
+          <h2
+            id='official-sources-heading'
+            className='text-ink/70 mt-0! mb-3! text-sm! font-medium tracking-wide uppercase'
+          >
+            official sources
+          </h2>
           <ul className='space-y-2'>
             {project.links.map((link) => (
               <li key={link.href} className='list-none'>
@@ -97,7 +130,7 @@ export default function MakingDetail({ project }: Props) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       )}
 
       {/* Tags — optional */}
@@ -114,6 +147,6 @@ export default function MakingDetail({ project }: Props) {
           </ul>
         </div>
       )}
-    </section>
+    </article>
   );
 }

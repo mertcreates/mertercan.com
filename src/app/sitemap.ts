@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...projects.map((p) => ({
       url: `${siteUrl}/making/${p.slug}`,
-      lastModified: p.updatedAt,
+      lastModified: p.pageReviewedAt,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),
