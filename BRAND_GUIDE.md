@@ -1,217 +1,93 @@
-# MERT ERCAN — Brand & Tone Guide (v1.1)
+# Mert Ercan: brand and tone guide (v2)
 
-A reference document for keeping the voice, tone, rhythm, and identity of **mertercan.com** consistent across future updates, content additions, and redesigns.
+This guide covers the site introduction, project descriptions, and editorial notes on mertercan.com. Literary work keeps its author's voice.
 
-This guide defines the core philosophy that the site expresses:
-**build quietly, show clearly, grow deeply.**
+## Identity
 
----
+Present Mert through his work, writing, and way of seeing the world. His character, relationships with ideas, and personal reflections have a place alongside the things he makes.
 
-## 1. Brand Essence
+The site's character is warm, calm, and editorial. Clarity, empathy, curiosity, and care shape both the work and its presentation. Give these qualities room through personal language as well as concrete examples.
 
-The site is shaped by a simple idea:
+Use English for the site introduction and preserve the original language of each literary work. Help visitors understand who Mert is and find something they want to explore.
 
-**Small things, done with clarity and curiosity, quietly grow into meaning.**
+## Voice and rhythm
 
-Growth here isn’t driven by testing ideas for the sake of novelty —
-it’s shaped by noticing, staying, and letting meaning unfold over time.
+Write as one person sharing something with another. Use the words that fit the subject. A technical explanation can be precise; a personal passage can be reflective, poetic, amused, enthusiastic, or uncertain.
 
-Every piece of content should reflect:
+Let each paragraph develop its thought at a natural pace. Some explain what a tool does; others express a feeling, explore an idea, or give the reader a sense of the person behind the work. Leave room for a thought to unfold.
 
-- quiet confidence
-- depth over noise
-- clarity over complexity
-- curiosity over speed
-- sincerity over performance
-- softness without weakness
-- minimalism without emptiness
+Use concrete details to explain projects and decisions. Include dates, constraints, and supported results when they help the reader. Reflective passages can carry meaning through voice, imagery, or a personal perspective; choose the level of detail that suits the passage.
 
-Tone is personal, calm, and editorial — never loud, never corporate, never showy.
-Quiet does not mean hidden: useful detail, measurable results, and project status
-are welcome when they help people understand the work.
+Let sentence lengths vary with the thought. Read neighboring sections together and consider what each contributes. A shared theme can connect sections that explore character, practice, and growth from different angles. Combine passages when their purpose and contribution genuinely duplicate each other, preserving distinctive asides and the page's rhythm.
 
----
+## Page roles
 
-## 2. Core Themes
+| Surface                  | Purpose                                                                                                                                           |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Homepage                 | Let visitors get to know Mert through his personality, approach, inner life, writing, and work. Offer clear paths to explore the things he makes. |
+| Making and project pages | Explain what a project does, its origin, relevant constraints, and current state. Keep evidence close to claims.                                  |
+| Writing and series pages | Help readers find and read the work. Preserve original titles, language, voice, and spoiler boundaries.                                           |
+| Life                     | Record changes over time. Group related publication updates and include personal context when Mert supplies it.                                   |
+| Footer                   | Provide contact and profile links, with an optional personal closing line.                                                                        |
 
-These concepts appear across the entire site and define its emotional and intellectual arc:
+Preserve the purpose and pacing of established sections when editing their language. On the homepage, Who I Am introduces character, What I Make explains practice, and How I Grow holds personal reflection. Selected Writing and Selected Work show the work itself. These roles can share themes while contributing different perspectives.
 
-### ✔ Small Things
+Review proposed section merges separately from sentence-level edits, with an explicit account of which roles and personal qualities the new structure preserves. Judge an edit by clarity, personal voice, and rhythm together.
 
-Tiny moments, tiny projects, tiny worlds. Growth emerging from the subtle.
+## Content ownership
 
-### ✔ Clarity
+- Preserve authored stories, poems, dialogue, punctuation, and meaningful spacing. Changes to these require approval for the specific edit.
+- Ground personal statements in Mert's supplied content. Ask him about missing experiences, motivations, or feelings when they matter to the text.
+- Confirm time-sensitive claims such as current interests before updating them.
+- Distinguish the date of site publication from the date a work was written or presented.
+- Read titles, destinations, and source descriptions from the writing registry.
+- Limit story introductions and metadata to the opening premise.
+- Include personal introductions and notes when there is genuine content to share.
 
-Simple structures, clean thinking, gentle order.
+## SEO continuity
 
-### ✔ Empathy
+Keep editorial copy consistent with the site's established identity.
 
-Understanding people, context, and the human side of building.
+- Keep "Hey, I’m Mert." as the friendly homepage H1 and "Mert Ercan" in the visible introduction. The full name identifies the person behind the work.
+- Retain the frontend-development identity alongside tools, systems, and writing.
+- Preserve descriptive links to selected projects and literary work when combining sections.
+- Review changes to titles, descriptions, canonical URLs, social metadata, and structured data together as a separate SEO change.
+- Keep the stable WebSite, ProfilePage, and Person identifiers and their relationships in `src/lib/seo.ts`.
+- Use natural wording for names and subjects. Evaluate search impact with the query-and-page measurements in `docs/seo-measurement.md`; ranking outcomes require measured evidence.
 
-### ✔ Steady Curiosity
+The full-name decision is documented in SEO commit `2668f7e` and retained in homepage-writing commit `90c5715`.
 
-Exploration without rushing. Learning without pressure.
+## Examples from the site
 
-### ✔ Gentle Growth
+| Example                                                                                     | What it contributes |
+| ------------------------------------------------------------------------------------------- | ------------------- |
+| "A game library utility born from one friend's repeated trips between home and university." | A specific origin.  |
+| "The first usable version went live in one day."                                            | A concrete result.  |
+| '"How I Grow" got a second paragraph. It needed more room.'                                 | A personal aside.   |
+| "Started this page to remember what was here and what changed."                             | A clear purpose.    |
 
-Soft, patient, honest development. Slow shifts, meaningful changes.
+Use these as examples of different jobs a sentence can do. Let new material find its own wording.
 
-### ✔ Meaning
+The homepage's "I grow where I care" expresses a personal outlook. "The continuity matters more than the output" describes a relationship with creative work. Preserve the role of such lines alongside factual descriptions, considering their meaning in context.
 
-Every part of the site hints at personal meaning — quiet, understated, real.
+## Visual character
 
-### ✔ Origin & Intention
+Keep the established typography, colors, spacing, and editorial character unless a redesign is requested. Express hierarchy through alignment and grouping. Give useful detail enough room, and display user content faithfully.
 
-Some things begin as quiet gestures — of care, love, or curiosity —
-and continue as worlds, characters, or practices that carry personal meaning.
+## Internal compass
 
----
+"Small things, done with clarity and curiosity, quietly grow into meaning."
 
-## 3. Voice & Tone
+"Build quietly. Show clearly. Grow deeply."
 
-The voice should always feel:
+These lines remain a living expression of the site's outlook. Let that outlook inform the tone, while choosing each passage's language and rhythm from its subject and Mert's own voice.
 
-- editorial
-- warm but quiet
-- thoughtful
-- free of urgency
-- honest
-- minimal
-- slightly poetic when it helps, but grounded
+## Review before publishing
 
-Avoid:
-
-- jargon
-- motivational clichés
-- over-explanation
-- marketing tone
-- bragging or hype
-- performance
-- flashy language or loud metaphors
-
-Use short paragraphs, soft line breaks, and a rhythm that feels like a personal journal, not an ad.
-
----
-
-## 4. Writing Rhythm
-
-Most paragraphs follow this quiet, three-step structure:
-
-1. **What** you do or notice
-2. **How** you approach it
-3. **Why** it matters (soft, subtle ending)
-
-Examples across the site:
-
-- “I create with clarity… I approach challenges simply… I grow through gentle attention.”
-- “Some things begin as quiet gestures… they become small worlds… they keep me close to tenderness.”
-- “I’m shaped by subtle shifts… I move in honest ways… I don’t rush what needs space.”
-
----
-
-## 5. Section Roles (High-Level Summary)
-
-### **Hero — Identity + Philosophy**
-
-Introduce tone, identity, and the quiet worldview.
-Soft, clean, personal.
-
-### **Who I Am — Approach & Character**
-
-Clarity, empathy, curiosity, thoughtful craft, small joys.
-
-### **What I Make — Methods**
-
-Simple structures, human-centered problem solving, tiny creative worlds.
-
-### **Selected Work — Proof of Approach**
-
-Refactoring, tools, community projects, measurable outcomes, structure over flash.
-
-### **How I Grow — Internal World**
-
-Soft reflection, subtle growth, honest pacing, gentle attention.
-
-### **Footer — Signature**
-
-Warm, approachable, minimal, with a personal closing line.
-
----
-
-## 6. Recurring Motifs (The Site’s Vocabulary)
-
-These words and ideas define the atmosphere:
-
-- quiet
-- soft / softly
-- slow / slowly
-- meaning
-- tiny worlds
-- clarity
-- curiosity
-- gesture
-- care
-- thoughtful work
-- simple structures
-- subtle shifts
-- gentle attention
-
-Future writing may draw from these words and ideas when they fit naturally.
-
----
-
-## 7. What to Avoid
-
-- intense “guru talk”
-- loud statements or “big promises”
-- marketing language
-- dramatic emotional claims
-- technical detail used as performance instead of clarity
-- heavy effects or animations
-- anything flashy
-
-If something makes the page feel noisy or performative, it’s not aligned.
-
----
-
-## 8. Future Content Guidelines
-
-When adding blog posts, notes, or new sections:
-
-- keep paragraphs short
-- use whitespace
-- let ideas breathe
-- don’t force intensity
-- share technical detail, project status, or measurable results when they clarify the work
-- choose gentle transitions
-- focus on small observations
-- end with a soft reflection when it genuinely fits
-- make the next step clear when one exists
-- avoid “here’s what you must do” tone
-
-Ask:
-**Does this grow quietly?
-Does this show clearly?
-Does this go deeper, not louder?**
-
-If yes → it belongs.
-
----
-
-## 9. The One-Sentence Brand Manifesto
-
-This line captures the entire voice of mertercan.com:
-
-**Small things, done with clarity and curiosity, quietly grow into meaning.**
-
-Keep everything within the orbit of this sentiment.
-
----
-
-## 10. Optional Extended Mantra
-
-(For future inspiration or header of a Notes page)
-
-**Build quietly.
-Show clearly.
-Grow deeply.**
+- What does this passage help the reader understand or feel about Mert and his work?
+- What perspective or rhythm does it contribute to the surrounding text?
+- Does the edit preserve the personal voice and the distinct purpose of each section?
+- Which supplied facts support its personal statements and claims?
+- Are original writing, language, dates, links, and spoiler boundaries preserved?
+- Are the established SEO identity signals intact?
+- Can readers find the next step when they need one?
