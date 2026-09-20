@@ -97,6 +97,7 @@ const entries: Entry[] = [
           writingLink('hikayeler/arena-xxxii-bir-seyler'),
           writingLink('hikayeler/arena-xxxiii-borc'),
           writingLink('hikayeler/arena-xxxiv-nobet'),
+          writingLink('hikayeler/arena-xxxv-fark'),
         ],
       },
     ],
