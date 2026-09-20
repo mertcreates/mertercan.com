@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Footer from '@/app/components/Footer';
 import { siteName, siteUrl } from '@/lib/seo';
-import { getWritingSeries } from '@/lib/writing/registry';
+import { getWritingByPath, getWritingSeries } from '@/lib/writing/registry';
 
 const description = 'A quiet record of how this site — and I — grow.';
 const arenaSeries = getWritingSeries('arena');
@@ -42,17 +42,29 @@ export const metadata: Metadata = {
 type Entry = {
   date: string;
   dateTime: string;
+  // Optional personal reflection. Omit until there is something to share.
   intro?: string;
   notes: LifeNote[];
 };
 
 type LifeNote = {
   text: string;
+  links?: NonNullable<LifeNote['relatedLink']>[];
   relatedLink?: {
     href: string;
     label: string;
   };
 };
+
+function writingLink(path: string): NonNullable<LifeNote['relatedLink']> {
+  const writing = getWritingByPath(path.split('/'));
+
+  if (!writing) {
+    throw new Error(`Life note references an unknown writing: ${path}`);
+  }
+
+  return { href: `/writing/${writing.path.join('/')}`, label: writing.title };
+}
 
 const entries: Entry[] = [
   {
@@ -60,96 +72,32 @@ const entries: Entry[] = [
     dateTime: '2026-09',
     notes: [
       {
-        text: 'Arena continued with a twelfth story about a man questioning the relationship between justice, friendship, and responsibility.',
-        relatedLink: { href: '/writing/hikayeler/arena-xii-gerekce', label: 'Arena XII — Gerekçe' },
-      },
-      {
-        text: 'Arena continued with a thirteenth story about a man searching for somewhere to work who wanders into a small café.',
-        relatedLink: { href: '/writing/hikayeler/arena-xiii-mudavim', label: 'Arena XIII — Müdavim' },
-      },
-      {
-        text: 'Arena continued with a fourteenth story about a familiar visitor returning to a place where the usual welcome is missing.',
-        relatedLink: { href: '/writing/hikayeler/arena-xiv-yokluk', label: 'Arena XIV — Yokluk' },
-      },
-      {
-        text: 'Arena continued with a fifteenth story about a therapist following the thread of a question through a session.',
-        relatedLink: { href: '/writing/hikayeler/arena-xv-iz', label: 'Arena XV — İz' },
-      },
-      {
-        text: 'Arena continued with a sixteenth story about a child waking to rain and reaching for what feels familiar.',
-        relatedLink: { href: '/writing/hikayeler/arena-xvi-yaninda', label: 'Arena XVI — Yanında' },
-      },
-      {
-        text: 'Arena continued with a seventeenth story about a grandmother meeting her grandchild’s joy of rain and play with a mixture of concern and curiosity.',
-        relatedLink: { href: '/writing/hikayeler/arena-xvii-birlikte', label: 'Arena XVII — Birlikte' },
-      },
-      {
-        text: 'Arena continued with an eighteenth story about a young employee stepping into a room’s attention and feeling it shift.',
-        relatedLink: { href: '/writing/hikayeler/arena-xviii-bakis', label: 'Arena XVIII — Bakış' },
-      },
-      {
-        text: 'Arena continued with a nineteenth story about a child’s questions on a rainy family visit.',
-        relatedLink: { href: '/writing/hikayeler/arena-xix-her-zaman', label: 'Arena XIX — Her Zaman' },
-      },
-      {
-        text: 'Arena continued with a twentieth story about a quiet presence and the changes that return with May.',
-        relatedLink: { href: '/writing/hikayeler/arena-xx-mayis', label: 'Arena XX — Mayıs' },
-      },
-      {
-        text: 'Arena continued with a twenty-first story about a man walking away from judgment while wind and water carry the evening onward.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxi-akis', label: 'Arena XXI — Akış' },
-      },
-      {
-        text: 'Arena continued with a twenty-second story about a return to a familiar house and the traces that care leaves behind.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxii-yerinde', label: 'Arena XXII — Yerinde' },
-      },
-      {
-        text: 'Arena continued with a twenty-third story about a therapist beginning a crowded day with something long left unwritten.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxiii-sira', label: 'Arena XXIII — Sıra' },
-      },
-      {
-        text: 'Arena continued with a twenty-fourth story about an unanswered message carried through an ordinary day at a café.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxiv-olur', label: 'Arena XXIV — Olur' },
-      },
-      {
-        text: 'Arena continued with a twenty-fifth story about an old man sitting in the rain while a brief scene unfolds across the park.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxv-bir-sure', label: 'Arena XXV — Bir Süre' },
-      },
-      {
-        text: 'Arena continued with a twenty-sixth story about a mother and daughter crossing a rainy day with a familiar warning between them.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxvi-dikkat', label: 'Arena XXVI — Dikkat' },
-      },
-      {
-        text: 'Arena continued with a twenty-seventh story about a family evening shaped by a child’s game and a familiar word.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxvii-merhamet', label: 'Arena XXVII — Merhamet' },
-      },
-      {
-        text: 'Arena continued with a twenty-eighth story about light, shadow, and what remains present through both.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxviii-hala', label: 'Arena XXVIII — Hâlâ' },
-      },
-      {
-        text: 'Arena continued with a twenty-ninth story about a quiet conversation, a notebook, and the question that lingers afterward.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxix-sonraki', label: 'Arena XXIX — Sonraki' },
-      },
-      {
-        text: 'Arena continued with a thirtieth story about a quiet morning seen through a child’s eyes.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxx-once', label: 'Arena XXX — Önce' },
-      },
-      {
-        text: 'Arena continued with a thirty-first story about a cleaner moving through an office after most people have gone.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxxi-kalan', label: 'Arena XXXI — Kalan' },
-      },
-      {
-        text: 'Arena continued with a thirty-second story about a teacher, a classroom, and a child’s curious observation.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxxii-bir-seyler', label: 'Arena XXXII — Bir Şeyler' },
-      },
-      {
-        text: 'Arena continued with a thirty-third story about a café conversation, two notebooks, and dreams told across the table.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxxiii-borc', label: 'Arena XXXIII — Borç' },
-      },
-      {
-        text: 'Arena continued with a thirty-fourth story about a nurse nearing the end of a shift and a quiet hospital room in the rain.',
-        relatedLink: { href: '/writing/hikayeler/arena-xxxiv-nobet', label: 'Arena XXXIV — Nöbet' },
+        text: arenaSeries.title,
+        links: [
+          writingLink('hikayeler/arena-xii-gerekce'),
+          writingLink('hikayeler/arena-xiii-mudavim'),
+          writingLink('hikayeler/arena-xiv-yokluk'),
+          writingLink('hikayeler/arena-xv-iz'),
+          writingLink('hikayeler/arena-xvi-yaninda'),
+          writingLink('hikayeler/arena-xvii-birlikte'),
+          writingLink('hikayeler/arena-xviii-bakis'),
+          writingLink('hikayeler/arena-xix-her-zaman'),
+          writingLink('hikayeler/arena-xx-mayis'),
+          writingLink('hikayeler/arena-xxi-akis'),
+          writingLink('hikayeler/arena-xxii-yerinde'),
+          writingLink('hikayeler/arena-xxiii-sira'),
+          writingLink('hikayeler/arena-xxiv-olur'),
+          writingLink('hikayeler/arena-xxv-bir-sure'),
+          writingLink('hikayeler/arena-xxvi-dikkat'),
+          writingLink('hikayeler/arena-xxvii-merhamet'),
+          writingLink('hikayeler/arena-xxviii-hala'),
+          writingLink('hikayeler/arena-xxix-sonraki'),
+          writingLink('hikayeler/arena-xxx-once'),
+          writingLink('hikayeler/arena-xxxi-kalan'),
+          writingLink('hikayeler/arena-xxxii-bir-seyler'),
+          writingLink('hikayeler/arena-xxxiii-borc'),
+          writingLink('hikayeler/arena-xxxiv-nobet'),
+        ],
       },
     ],
   },
@@ -161,66 +109,34 @@ const entries: Entry[] = [
     notes: [
       {
         text: 'Tedbir became the first poem published on the site.',
-        relatedLink: { href: '/writing/siirler/tedbir', label: 'Tedbir' },
+        relatedLink: writingLink('siirler/tedbir'),
       },
       {
-        text: 'Added Sorumluluk as the seventh part of the Turkish Denemeler series.',
-        relatedLink: { href: '/writing/denemeler/sorumluluk', label: 'Sorumluluk' },
-      },
-      {
-        text: 'Added Sağlıklı Sınırlar as the eighth part of the Turkish Denemeler series.',
-        relatedLink: { href: '/writing/denemeler/saglikli-sinirlar', label: 'Sağlıklı Sınırlar' },
-      },
-      {
-        text: 'Added Öznellik as the ninth and final part of the Turkish Denemeler series.',
-        relatedLink: { href: '/writing/denemeler/oznellik', label: 'Öznellik' },
+        text: 'Completed the Denemeler series on the site with Sorumluluk, Sağlıklı Sınırlar, and Öznellik.',
+        links: [
+          writingLink('denemeler/sorumluluk'),
+          writingLink('denemeler/saglikli-sinirlar'),
+          writingLink('denemeler/oznellik'),
+        ],
       },
       {
         text: 'Arena began with two short stories written years apart.',
         relatedLink: { href: arenaSeries.hubPath, label: arenaSeries.title },
+        links: [
+          writingLink('hikayeler/arena-iii-hukum'),
+          writingLink('hikayeler/arena-iv-ara'),
+          writingLink('hikayeler/arena-v-bekleyis'),
+          writingLink('hikayeler/arena-vi-bosluk'),
+          writingLink('hikayeler/arena-vii-soru'),
+          writingLink('hikayeler/arena-viii-bir-kere-daha'),
+          writingLink('hikayeler/arena-ix-gece'),
+          writingLink('hikayeler/arena-x-seyirci'),
+          writingLink('hikayeler/arena-xi-gorev'),
+        ],
       },
       {
-        text: 'Arena continued with a third story about a king questioning the role he was given and the judgment expected of him.',
-        relatedLink: { href: '/writing/hikayeler/arena-iii-hukum', label: 'Arena III — Hüküm' },
-      },
-      {
-        text: 'Arena continued with a fourth story about a couple taking a brief pause beneath the rain.',
-        relatedLink: { href: '/writing/hikayeler/arena-iv-ara', label: 'Arena IV — Ara' },
-      },
-      {
-        text: 'Arena continued with a fifth story about a woman keeping watch through rain and memory.',
-        relatedLink: { href: '/writing/hikayeler/arena-v-bekleyis', label: 'Arena V — Bekleyiş' },
-      },
-      {
-        text: 'Arena continued with a sixth story about an advisor facing a silence that changes the shape of his role.',
-        relatedLink: { href: '/writing/hikayeler/arena-vi-bosluk', label: 'Arena VI — Boşluk' },
-      },
-      {
-        text: 'Arena continued with a seventh story about a question that follows a man out of a gladiator dream.',
-        relatedLink: { href: '/writing/hikayeler/arena-vii-soru', label: 'Arena VII — Soru' },
-      },
-      {
-        text: 'Arena continued with an eighth story about a mother caught between an urgent journey and her son’s wish to play one more time.',
-        relatedLink: { href: '/writing/hikayeler/arena-viii-bir-kere-daha', label: 'Arena VIII — Bir Kere Daha' },
-      },
-      {
-        text: 'Arena continued with a ninth story about a couple giving themselves more time on an evening beyond their plans.',
-        relatedLink: { href: '/writing/hikayeler/arena-ix-gece', label: 'Arena IX — Gece' },
-      },
-      {
-        text: 'Arena continued with a tenth story about a woman who finds herself inside a crowd moving as one.',
-        relatedLink: { href: '/writing/hikayeler/arena-x-seyirci', label: 'Arena X — Seyirci' },
-      },
-      {
-        text: 'Arena continued with an eleventh story about a man called to solve a problem and the role waiting for him in the room.',
-        relatedLink: { href: '/writing/hikayeler/arena-xi-gorev', label: 'Arena XI — Görev' },
-      },
-      {
-        text: "Added the leadership talk I presented on stage at the end of 2025, connecting Irvin Yalom's existential approach with leading oneself.",
-        relatedLink: {
-          href: '/writing/liderlik-yalom-ve-kendine-liderlik-etmek',
-          label: 'Liderlik, Yalom ve Kendine Liderlik Etmek',
-        },
+        text: "Published the talk I gave at the end of 2025 about Irvin Yalom's existential approach and leading oneself.",
+        relatedLink: writingLink('liderlik-yalom-ve-kendine-liderlik-etmek'),
       },
     ],
   },
@@ -231,25 +147,16 @@ const entries: Entry[] = [
       'Writing changed shape this month. One piece became a public tool. A few essays found their place on the site, and the conversation continued.',
     notes: [
       {
-        text: 'Built and launched Dizgi, a browser-based tool that turns long-form writing into carefully paginated images and PDFs without rewriting the text.',
+        text: 'Built and launched Dizgi, a browser-based tool for laying out long-form writing as images and PDFs without changing the text. The first usable version went live in one day.',
         relatedLink: { href: '/making/dizgi', label: 'Dizgi' },
       },
       {
-        text: 'The first usable version went from idea to a live product in one day, with rendered-layout pagination, intentional page breaks, typography and background controls, previews, and image and PDF export.',
-      },
-      {
-        text: 'Added Dizgi to Selected Work and gave it a dedicated /making page.',
-      },
-      {
-        text: 'Added /writing as a quieter place for notes, essays, and small conversations.',
+        text: 'Opened the Writing section for notes, essays, and small conversations.',
         relatedLink: { href: '/writing', label: 'Writing' },
       },
       {
-        text: 'Brought the Turkish Denemeler series into the site without turning the whole site multilingual.',
-      },
-      {
-        text: 'Added Dostluk 2 as the next part of the Turkish Denemeler series.',
-        relatedLink: { href: '/writing/denemeler/dostluk-2', label: 'Dostluk 2' },
+        text: 'Added the Turkish Denemeler series, followed by Dostluk 2.',
+        relatedLink: writingLink('denemeler/dostluk-2'),
       },
     ],
   },
@@ -260,7 +167,7 @@ const entries: Entry[] = [
       'A lot had been building quietly. Projects existed but the site had not caught up yet. This update was mostly about closing that gap.',
     notes: [
       {
-        text: 'Added BugJar, Haklısın!, Kombin.dev, Project Canon, and two ESLint plugins to Selected Work. Built dedicated /making pages for each, and stripped away the "marketing" voice in favor of a calm, structural record.',
+        text: 'Added BugJar, Haklısın!, Kombin.dev, Project Canon, and two ESLint plugins to Selected Work, each with a page explaining the project in plain language.',
         relatedLink: { href: '/making', label: 'Selected Work' },
       },
       {
@@ -270,44 +177,97 @@ const entries: Entry[] = [
         text: '"How I Grow" got a second paragraph. It needed more room.',
       },
       {
-        text: 'This page — as a place to remember what was here and what changed.',
+        text: 'Started this page to remember what was here and what changed.',
       },
     ],
   },
 ];
+
+function Note({ note }: { note: LifeNote }) {
+  return (
+    <span className="before:text-ink/30 text-ink/80 before:mr-3 before:content-['-']">
+      {note.text}
+      {note.relatedLink && (
+        <Link
+          href={note.relatedLink.href}
+          className='text-ink/70 hover:text-ink/90 decoration-ink/40 focus-visible:outline-accent ml-2 text-sm underline underline-offset-2 outline-offset-4 transition-colors focus-visible:outline-2'
+        >
+          {note.relatedLink.label} →
+        </Link>
+      )}
+    </span>
+  );
+}
 
 export default function Life() {
   return (
     <main className='min-h-screen'>
       <section className='container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
         <h1 className='mb-3'>Life</h1>
-        <p className='text-ink/70 mt-0! mb-16 text-sm! italic md:mb-20'>
-          A quiet record of how this site — and I — grow.
-        </p>
+        <p className='text-ink/70 mt-0! mb-8 text-sm! italic'>A quiet record of how this site — and I — grow.</p>
+
+        <nav aria-label='Months' className='mb-14 md:mb-16'>
+          <ul className='flex flex-wrap gap-x-6 gap-y-2'>
+            {entries.map((entry) => (
+              <li key={entry.dateTime}>
+                <a
+                  href={`#${entry.dateTime}`}
+                  className='text-ink/70 focus-visible:outline-accent inline-flex min-h-11 items-center text-sm underline underline-offset-4 outline-offset-4 focus-visible:outline-2'
+                >
+                  {entry.date}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <div className='max-w-[620px] space-y-14 md:space-y-16'>
           {entries.map((entry) => (
-            <div key={entry.date}>
-              <h2 className='text-ink/70 mt-0! mb-4! text-sm! font-medium tracking-wide uppercase'>
-                <time dateTime={entry.dateTime}>{entry.date}</time>
+            <section
+              key={entry.dateTime}
+              id={entry.dateTime}
+              aria-labelledby={`month-${entry.dateTime}`}
+              className='scroll-mt-24'
+            >
+              <h2
+                id={`month-${entry.dateTime}`}
+                className='text-ink/70 mt-0! mb-4! text-sm! font-medium tracking-wide uppercase'
+              >
+                <a
+                  href={`#${entry.dateTime}`}
+                  className='focus-visible:outline-accent no-underline! outline-offset-4 focus-visible:outline-2'
+                >
+                  <time dateTime={entry.dateTime}>{entry.date}</time>
+                </a>
               </h2>
               {entry.intro && <p className='text-ink/75 mb-6 italic'>{entry.intro}</p>}
               <ul className='space-y-2.5'>
                 {entry.notes.map((note, i) => (
-                  <li key={i} className="before:text-ink/30 text-ink/80 list-none before:mr-3 before:content-['-']">
-                    {note.text}
-                    {note.relatedLink && (
-                      <Link
-                        href={note.relatedLink.href}
-                        className='text-ink/70 hover:text-ink/90 decoration-ink/40 ml-2 text-sm underline underline-offset-2 transition-colors'
-                      >
-                        {note.relatedLink.label} →
-                      </Link>
+                  <li key={i}>
+                    {note.links ? (
+                      <div className='pb-4'>
+                        <Note note={note} />
+                        <ul className='ms-9 mt-2 grid grid-cols-1 gap-x-6 sm:grid-cols-2'>
+                          {note.links.map((link) => (
+                            <li key={link.href}>
+                              <Link
+                                href={link.href}
+                                lang='tr'
+                                className='text-ink/75 focus-visible:outline-accent inline-flex min-h-11 items-center text-sm underline underline-offset-4 outline-offset-4 focus-visible:outline-2'
+                              >
+                                {link.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <Note note={note} />
                     )}
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           ))}
         </div>
       </section>
