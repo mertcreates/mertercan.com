@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const Footer = () => {
   return (
     <div data-nosnippet=''>
@@ -32,6 +34,18 @@ const Footer = () => {
           >
             Pinterest
           </a>
+        </div>
+
+        <div className='flex justify-center' aria-hidden='true'>
+          <Image
+            src='/illustrations/rain-boat.webp'
+            alt=''
+            width={80}
+            height={80}
+            unoptimized
+            className='h-16 w-16 object-contain md:h-20 md:w-20'
+            loading='lazy'
+          />
         </div>
 
         <p className='footer-note mt-4 text-xs!'>made with clarity, curiosity, and a little care</p>
