@@ -257,6 +257,17 @@ export default async function WritingEntryPage({ params }: Props) {
               </div>
             )}
 
+        {!isSeriesEntry && (
+          <div data-nosnippet='' className='border-ink/8 max-w-[680px] border-t pt-8'>
+            <Link
+              href='/writing'
+              className='text-ink/70 hover:text-ink focus-visible:outline-accent text-sm no-underline transition-colors outline-offset-4 focus-visible:outline-2'
+            >
+              ← Tüm yazılar
+            </Link>
+          </div>
+        )}
+
         <div data-nosnippet='' className='mt-6 flex max-w-[680px] justify-start md:mt-8 md:justify-end'>
           <WritingShare title={writing.title} links={writingShareLinks} />
         </div>

@@ -1,6 +1,6 @@
 import type { Paragraph, PhrasingContent, Root } from 'mdast';
 
-const dialogueLinePattern = /^-\s+".*"/u;
+const dialogueLinePattern = /^(?:-|—)\s+".*"/u;
 
 type PhrasingLine = PhrasingContent[];
 

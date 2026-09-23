@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { markArenaStoryAsRead } from '@/lib/writing/arena-reading-progress';
 
 type Props = {
@@ -8,9 +8,26 @@ type Props = {
 };
 
 export default function ArenaReadTracker({ slug }: Props) {
+  const endMarkerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    markArenaStoryAsRead(slug);
+    const endMarker = endMarkerRef.current;
+
+    if (!endMarker) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        markArenaStoryAsRead(slug);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(endMarker);
+
+    return () => observer.disconnect();
   }, [slug]);
 
-  return null;
+  return <div ref={endMarkerRef} aria-hidden='true' className='h-px' />;
 }
