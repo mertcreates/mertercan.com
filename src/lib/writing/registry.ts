@@ -91,6 +91,11 @@ export type ArticleWriting = WritingBase & {
   series?: never;
 };
 
+type StoryIllustration = Readonly<{
+  src: string;
+  alt: string;
+}>;
+
 export type StoryWriting = WritingBase & {
   group: 'hikayeler';
   format: 'story';
@@ -216,6 +221,141 @@ function requiredPositiveInteger(value: unknown, field: string, filePath: string
   return value as number;
 }
 
+function parseStoryIllustration(value: unknown, index: number, filePath: string): StoryIllustration {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+    throw new Error(`${filePath}: illustrations[${index}] must be an object.`);
+  }
+
+  const illustration = value as Record<string, unknown>;
+  const src = requiredString(illustration.src, `illustrations[${index}].src`, filePath);
+
+  if (!src.startsWith('/illustrations/arena/') || src.split('/').includes('..')) {
+    throw new Error(`${filePath}: illustrations[${index}].src must point inside /illustrations/arena/.`);
+  }
+
+  return {
+    src,
+    alt: requiredString(illustration.alt, `illustrations[${index}].alt`, filePath),
+  };
+}
+
+function parseStoryIllustrations(
+  value: unknown,
+  filePath: string
+): readonly [StoryIllustration, StoryIllustration] | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  if (!Array.isArray(value) || value.length !== 2) {
+    throw new Error(`${filePath}: illustrations must contain exactly two entries.`);
+  }
+
+  return [parseStoryIllustration(value[0], 0, filePath), parseStoryIllustration(value[1], 1, filePath)];
+}
+
+const illustrationProgressTargets = [0.3, 0.7] as const;
+
+function countWords(html: string): number {
+  const text = html
+    .replace(/<[^>]*>/gu, ' ')
+    .replace(/&[^;\s]+;/gu, ' ')
+    .trim();
+  return text.length === 0 ? 0 : text.split(/\s+/u).length;
+}
+
+function findClosestParagraphIndex(
+  progressAtParagraphEnd: readonly number[],
+  target: number,
+  firstAvailable: number,
+  lastAvailable: number
+): number {
+  let selectedIndex = firstAvailable;
+  let smallestDistance = Number.POSITIVE_INFINITY;
+
+  for (let index = firstAvailable; index <= lastAvailable; index += 1) {
+    const distance = Math.abs(progressAtParagraphEnd[index] - target);
+
+    if (distance < smallestDistance) {
+      selectedIndex = index;
+      smallestDistance = distance;
+    }
+  }
+
+  return selectedIndex;
+}
+
+function getIllustrationParagraphNumbers(paragraphHtml: readonly string[]): readonly [number, number] {
+  if (paragraphHtml.length < 3) {
+    throw new Error('Arena story illustrations need at least three paragraphs.');
+  }
+
+  const wordCounts = paragraphHtml.map(countWords);
+  const totalWords = wordCounts.reduce((total, count) => total + count, 0);
+
+  if (totalWords === 0) {
+    throw new Error('Arena story illustrations cannot be placed in an empty story.');
+  }
+
+  const progressAtParagraphEnd: number[] = [];
+  let wordsRead = 0;
+
+  for (const wordCount of wordCounts) {
+    wordsRead += wordCount;
+    progressAtParagraphEnd.push(wordsRead / totalWords);
+  }
+
+  const firstParagraphIndex = findClosestParagraphIndex(
+    progressAtParagraphEnd,
+    illustrationProgressTargets[0],
+    0,
+    paragraphHtml.length - 3
+  );
+  const secondParagraphIndex = findClosestParagraphIndex(
+    progressAtParagraphEnd,
+    illustrationProgressTargets[1],
+    firstParagraphIndex + 1,
+    paragraphHtml.length - 2
+  );
+
+  return [firstParagraphIndex + 1, secondParagraphIndex + 1];
+}
+
+function escapeHtmlAttribute(value: string): string {
+  return value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+}
+
+function renderStoryIllustration({ src, alt }: StoryIllustration): string {
+  return `<figure class="story-illustration"><img src="${escapeHtmlAttribute(src)}" alt="${escapeHtmlAttribute(alt)}" width="1000" height="1000" loading="lazy"></figure>`;
+}
+
+function addStoryIllustrations(
+  contentHtml: string,
+  illustrations: readonly [StoryIllustration, StoryIllustration] | undefined
+): string {
+  if (!illustrations) {
+    return contentHtml;
+  }
+
+  // Count the same dialogue-split paragraphs that appear in the rendered story.
+  const paragraphs = Array.from(contentHtml.matchAll(/<p\b[^>]*>[\s\S]*?<\/p>/gu));
+  const illustrationParagraphNumbers = getIllustrationParagraphNumbers(paragraphs.map((match) => match[0]));
+  const htmlParts: string[] = [];
+  let cursor = 0;
+
+  for (let index = 0; index < illustrations.length; index += 1) {
+    const paragraph = paragraphs[illustrationParagraphNumbers[index] - 1];
+    const paragraphEnd = (paragraph.index ?? 0) + paragraph[0].length;
+
+    htmlParts.push(contentHtml.slice(cursor, paragraphEnd));
+    htmlParts.push(renderStoryIllustration(illustrations[index]));
+    cursor = paragraphEnd;
+  }
+
+  htmlParts.push(contentHtml.slice(cursor));
+  return htmlParts.join('');
+}
+
 function containsRawHtml(node: MarkdownNode): boolean {
   return node.type === 'html' || node.children?.some(containsRawHtml) === true;
 }
@@ -243,6 +383,10 @@ function loadWriting(relativeFilePath: string): WritingEntry {
   const publicPath = relativeFilePath.replace(/\.md$/, '').split(path.sep);
   const group = parseGroup(data.group, relativeFilePath);
   const format = parseFormat(data.format, relativeFilePath);
+  const storyIllustrations =
+    group === 'hikayeler' && format === 'story'
+      ? parseStoryIllustrations(data.illustrations, relativeFilePath)
+      : undefined;
   const processor = format === 'story' ? storyMarkdownProcessor : markdownProcessor;
   const markdownTree = processor.parse(content);
 
@@ -265,7 +409,7 @@ function loadWriting(relativeFilePath: string): WritingEntry {
     updatedAt: optionalIsoDate(data.updatedAt, 'updatedAt', relativeFilePath),
     displayDate: requiredString(data.displayDate, 'displayDate', relativeFilePath),
     keywords: parseKeywords(data.keywords, relativeFilePath),
-    contentHtml: String(processor.processSync(content)),
+    contentHtml: addStoryIllustrations(String(processor.processSync(content)), storyIllustrations),
   };
 
   if (group === 'denemeler') {

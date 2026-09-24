@@ -191,6 +191,14 @@ section[id]:target > h2 {
   @apply mt-[1.05rem];
 }
 
+.writing-story .story-illustration {
+  @apply my-10 flex justify-center md:my-12;
+}
+
+.writing-story .story-illustration img {
+  @apply h-auto w-full max-w-[480px];
+}
+
 .writing-story h2 {
   @apply mt-16 mb-6 text-[1.45rem]! md:mt-20 md:text-[1.75rem]!;
 }

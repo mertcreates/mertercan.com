@@ -8,6 +8,11 @@ group: "hikayeler"
 format: "story"
 series: "arena"
 position: 1
+illustrations:
+  - src: "/illustrations/arena/arena-i-gladyator-rising-knee.webp"
+    alt: "Bir dizi yerde, diğer ayağı kuma basılı gladyatörün karşısında belirsiz rakipler."
+  - src: "/illustrations/arena/arena-i-gladyator-shadow-rival-transparent.webp"
+    alt: "Kılıç darbesiyle karanlık bir biçime dönüşüp silinen gladyatör rakibi."
 ---
 
 Tek ayağı üzerinde diz çökmüş, kılıcından destek alarak yeniden doğrulmaya çalışıyordu. Nefesinin sonuna geldiğini hissediyordu. Ölüm için haykıran kalabalık bağırmaz olmuş, pür dikkat izliyordu. Yağmur bir süredir tuzlu olarak yağıyordu.

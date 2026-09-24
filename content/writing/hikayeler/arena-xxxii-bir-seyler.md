@@ -8,6 +8,11 @@ group: "hikayeler"
 format: "story"
 series: "arena"
 position: 32
+illustrations:
+  - src: "/illustrations/arena/arena-xxxii-bir-seyler-lined-pencils.webp"
+    alt: "Öğretmen, ön sıradaki öğrencinin yan yana dizdiği kalemlere bakıyor."
+  - src: "/illustrations/arena/arena-xxxii-bir-seyler-pencil-cases.webp"
+    alt: "Öğrenci, yana kayan üç kalemliği dirseğiyle düzelterek dolaba taşıyor; öğretmen uzaktan izliyor."
 ---
 
 Kadın sınıfa girdiğinde öğrencilerin çoğu yerlerine oturmuştu.

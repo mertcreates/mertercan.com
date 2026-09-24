@@ -140,8 +140,9 @@ export default async function WritingEntryPage({ params }: Props) {
         <div
           data-nosnippet={writing.format === 'story' ? '' : undefined}
           className={writingBodyClassNames[writing.format]}
-          dangerouslySetInnerHTML={{ __html: writing.contentHtml }}
-        />
+        >
+          <div dangerouslySetInnerHTML={{ __html: writing.contentHtml }} />
+        </div>
 
         {isStory && <ArenaReadTracker slug={writing.slug} />}
 
