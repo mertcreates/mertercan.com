@@ -100,6 +100,7 @@ const entries: Entry[] = [
           writingLink('hikayeler/arena-xliv-baska'),
           writingLink('hikayeler/arena-xlv-karsilik'),
           writingLink('hikayeler/arena-xlvi-yanina'),
+          writingLink('hikayeler/arena-xlvii-gecis'),
         ],
       },
     ],
