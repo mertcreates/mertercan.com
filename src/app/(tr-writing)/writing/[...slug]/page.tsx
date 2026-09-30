@@ -99,10 +99,9 @@ export default async function WritingEntryPage({ params }: Props) {
   const navigation = getWritingNavigation(writing);
   const isSeriesEntry = Boolean(writing.series);
   const isStory = writing.format === 'story';
-  const backLink =
-    isStory && navigation.series
-      ? { href: navigation.series.hubPath, label: `← ${navigation.series.title}` }
-      : { href: '/writing', label: '← writing' };
+  const backLink = navigation.series
+    ? { href: navigation.series.hubPath, label: `← ${navigation.series.title}` }
+    : { href: '/writing', label: '← writing' };
   const writingShareSeries =
     'position' in writing && writing.series ? { slug: writing.series, position: writing.position } : undefined;
   const writingShareLinks = buildWritingShareLinks({

@@ -14,6 +14,7 @@ function getLatestWritingLastModified(entries: readonly WritingEntry[]): string 
 }
 
 const arenaSeries = getWritingSeries('arena');
+const denemelerSeries = getWritingSeries('denemeler');
 const writingLastModified = getLatestWritingLastModified(writings);
 const arenaLastModified = getLatestWritingLastModified(arenaSeries.entries);
 
@@ -43,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${siteUrl}/arena`,
       lastModified: arenaLastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}${denemelerSeries.hubPath}`,
+      lastModified: getLatestWritingLastModified(denemelerSeries.entries),
       changeFrequency: 'monthly',
       priority: 0.7,
     },

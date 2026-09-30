@@ -18,3 +18,6 @@
 
 /arena/opengraph-image*
   Content-Type: image/png
+
+/denemeler/opengraph-image*
+  Content-Type: image/png

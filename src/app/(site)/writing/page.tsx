@@ -55,7 +55,9 @@ export default function Writing() {
 
         <section id='denemeler' aria-labelledby='denemeler-heading' className='max-w-[620px] scroll-mt-8' lang='tr'>
           <h2 id='denemeler-heading' className='mb-4 text-[1.45rem]! md:text-[1.75rem]!'>
-            Denemeler
+            <Link href={denemelerSeries.hubPath} className='text-ink hover:text-ink/70 no-underline'>
+              {denemelerSeries.title}
+            </Link>
           </h2>
           <p lang='tr' className='text-ink/70 mb-12 max-w-[58ch] md:mb-14'>
             {denemelerSeries.description}

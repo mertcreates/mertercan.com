@@ -35,7 +35,7 @@ const writingSeriesDefinitions = {
       'Bu serinin ilk beş denemesini yazarlığa giriş eğitimleri sırasında karaladım: düşünce, ölüm, özgecilik, insan doğası ve dostluk. Zamanla bunlara anlaşılmak, güvenmek, sorumluluk, sağlıklı sınırlar ve öznellik üzerine dört yeni diyalog eklendi.',
     seoDescription:
       'Bu serinin ilk beş denemesini yazarlığa giriş eğitimleri sırasında karaladım: düşünce, ölüm, özgecilik, insan doğası ve dostluk. Zamanla bunlara anlaşılmak, güvenmek, sorumluluk, sağlıklı sınırlar ve öznellik üzerine dört yeni diyalog eklendi.',
-    hubPath: '/writing#denemeler',
+    hubPath: '/denemeler',
     inLanguage: 'tr',
   },
 } as const satisfies Record<string, WritingSeriesDefinitionFields>;
