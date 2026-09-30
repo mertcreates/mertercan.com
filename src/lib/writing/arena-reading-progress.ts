@@ -11,6 +11,7 @@ type ArenaReadingProgress = {
 export type ArenaContinuationStory = {
   slug: string;
   href: string;
+  title: string;
 };
 
 type ArenaContinuation = {

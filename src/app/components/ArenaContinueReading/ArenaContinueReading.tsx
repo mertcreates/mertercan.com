@@ -47,7 +47,7 @@ export default function ArenaContinueReading({ stories }: Props) {
 
   return (
     <Link href={continuation.target.href} className='text-ink hover:text-ink/70 font-medium no-underline'>
-      {labels[continuation.state]} →
+      {labels[continuation.state]} → {continuation.target.title}
     </Link>
   );
 }

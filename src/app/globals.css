@@ -126,15 +126,15 @@ section[id]:target > h2 {
 }
 
 .essay-dialogue {
-  @apply mt-14 mb-16 max-w-[680px] md:mt-16 md:mb-20;
+  @apply mt-10 mb-16 max-w-[680px] md:mt-16 md:mb-20;
 }
 
 .essay-dialogue p {
-  @apply text-ink/85 m-0 leading-[1.9]!;
+  @apply text-ink/85 m-0 text-[1.0625rem] leading-[1.6]!;
 }
 
 .essay-dialogue p + p {
-  @apply mt-[1.05rem];
+  @apply mt-6;
 }
 
 .writing-poem {
@@ -150,12 +150,12 @@ section[id]:target > h2 {
 }
 
 .writing-prose {
-  @apply mt-14 mb-16 max-w-[680px] md:mt-16 md:mb-20;
+  @apply mt-10 mb-16 max-w-[680px] md:mt-16 md:mb-20;
 }
 
 .writing-prose p,
 .writing-prose li {
-  @apply text-ink/85 leading-[1.9]!;
+  @apply text-ink/85 text-[1.0625rem] leading-[1.6]!;
 }
 
 .writing-prose p {
@@ -163,7 +163,7 @@ section[id]:target > h2 {
 }
 
 .writing-prose p + p {
-  @apply mt-[1.05rem];
+  @apply mt-5;
 }
 
 .writing-prose h2 {
@@ -175,12 +175,12 @@ section[id]:target > h2 {
 }
 
 .writing-story {
-  @apply mt-14 mb-16 max-w-[640px] md:mt-16 md:mb-20;
+  @apply mt-10 mb-16 max-w-[640px] md:mt-16 md:mb-20;
 }
 
 .writing-story p,
 .writing-story li {
-  @apply text-ink/85 text-base leading-[1.85]! md:text-[1.0625rem]!;
+  @apply text-ink/85 text-[1.0625rem] leading-[1.6]!;
 }
 
 .writing-story p {
@@ -188,7 +188,7 @@ section[id]:target > h2 {
 }
 
 .writing-story p + p {
-  @apply mt-[1.05rem];
+  @apply mt-5;
 }
 
 .writing-story .story-illustration {

@@ -154,22 +154,10 @@ export default async function WritingEntryPage({ params }: Props) {
                   className='border-ink/8 max-w-[640px] border-t pt-8'
                 >
                   <div className='grid gap-3 sm:grid-cols-2'>
-                    {navigation.previous && (
-                      <Link
-                        href={`/writing/${navigation.previous.path.join('/')}`}
-                        className='border-ink/10 text-ink/70 hover:border-ink/25 hover:text-ink focus-visible:outline-accent flex min-h-24 flex-col justify-between gap-3 border p-4 no-underline! transition-colors outline-offset-4 focus-visible:outline-2'
-                      >
-                        <span className='text-sm'>Önceki hikâye</span>
-                        <span className='text-ink font-medium'>← {navigation.previous.title}</span>
-                        <span className='text-sm tabular-nums'>
-                          {writing.position - 1}/{navigation.total}
-                        </span>
-                      </Link>
-                    )}
                     {navigation.next && (
                       <Link
                         href={`/writing/${navigation.next.path.join('/')}`}
-                        className='border-ink/15 text-ink hover:border-ink/30 focus-visible:outline-accent flex min-h-24 flex-col justify-between gap-3 border p-4 no-underline! transition-colors outline-offset-4 focus-visible:outline-2 sm:col-start-2 sm:items-end sm:text-right'
+                        className='border-ink/15 text-ink hover:border-ink/30 focus-visible:outline-accent flex flex-col justify-between gap-3 border p-4 no-underline! transition-colors outline-offset-4 focus-visible:outline-2 sm:col-start-2 sm:row-start-1'
                       >
                         <span className='text-ink/70 text-sm'>Sonraki hikâye</span>
                         <span className='font-medium'>{navigation.next.title} →</span>
@@ -178,11 +166,23 @@ export default async function WritingEntryPage({ params }: Props) {
                         </span>
                       </Link>
                     )}
+                    {navigation.previous && (
+                      <Link
+                        href={`/writing/${navigation.previous.path.join('/')}`}
+                        className='border-ink/10 text-ink/70 hover:border-ink/25 hover:text-ink focus-visible:outline-accent flex flex-col justify-between gap-3 border p-4 no-underline! transition-colors outline-offset-4 focus-visible:outline-2 sm:col-start-1 sm:row-start-1'
+                      >
+                        <span className='text-sm'>Önceki hikâye</span>
+                        <span className='text-ink font-medium'>← {navigation.previous.title}</span>
+                        <span className='text-sm tabular-nums'>
+                          {writing.position - 1}/{navigation.total}
+                        </span>
+                      </Link>
+                    )}
                   </div>
-                  <div className='mt-5'>
+                  <div className='mt-5 text-center'>
                     <Link
                       href={navigation.series.hubPath}
-                      className='text-ink/70 hover:text-ink text-sm no-underline transition-colors'
+                      className='text-ink/70 hover:text-ink focus-visible:outline-accent inline-flex min-h-11 items-center text-sm no-underline transition-colors outline-offset-4 focus-visible:outline-2'
                     >
                       Tüm {navigation.series.title} hikâyeleri
                     </Link>

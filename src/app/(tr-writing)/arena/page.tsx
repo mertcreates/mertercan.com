@@ -27,6 +27,7 @@ const latestStoryHref = getStoryHref(latestStory);
 const continuationStories = arenaStories.map((story) => ({
   slug: story.slug,
   href: getStoryHref(story),
+  title: story.title,
 }));
 
 export const metadata: Metadata = {
