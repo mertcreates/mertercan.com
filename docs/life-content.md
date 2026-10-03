@@ -18,6 +18,6 @@ Use `writingLink('hikayeler/story-slug')` for individual writing links. The regi
 
 Related writing updates can share one note with `text` and a `links` array of `writingLink(...)` values. An optional `relatedLink` remains inline with the text, for example the Arena series link. The other links appear beneath the note in their authored order.
 
-For Arena, use `text: arenaSeries.title` when there is no separate monthly note. Show only story titles and links; individual stories do not need editorial descriptions. Keep unrelated notes outside the group. A personal reflection on the writing process can be added separately when there is something to share.
+For Arena, keep one short monthly publication note with a `relatedLink` to the series page rather than listing individual stories. Include the month's story count and position range when useful, for example `Added 37 stories to Arena, from XII to XLVIII.` Use `siteAddedAt` to place publications in the correct month; update the count and range when adding stories. Preserve existing introductory notes, such as how the series began. Keep unrelated notes outside the group. A personal reflection on the writing process can be added separately when there is something to share.
 
 Month links use the existing `dateTime` value, for example `/life#2026-09`. Keep these identifiers stable.
