@@ -63,7 +63,7 @@ const entries: Entry[] = [
     dateTime: '2026-10',
     notes: [
       {
-        text: 'Added 4 stories to Arena, from XLIX to LII.',
+        text: 'Added 5 stories to Arena, from XLIX to LIII.',
         relatedLink: { href: arenaSeries.hubPath, label: arenaSeries.title },
       },
     ],
