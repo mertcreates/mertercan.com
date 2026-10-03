@@ -32,9 +32,8 @@ const writingSeriesDefinitions = {
     slug: 'denemeler',
     title: 'Denemeler',
     description:
-      'Bu serinin ilk beş denemesini yazarlığa giriş eğitimleri sırasında karaladım: düşünce, ölüm, özgecilik, insan doğası ve dostluk. Zamanla bunlara anlaşılmak, güvenmek, sorumluluk, sağlıklı sınırlar ve öznellik üzerine dört yeni diyalog eklendi.',
-    seoDescription:
-      'Bu serinin ilk beş denemesini yazarlığa giriş eğitimleri sırasında karaladım: düşünce, ölüm, özgecilik, insan doğası ve dostluk. Zamanla bunlara anlaşılmak, güvenmek, sorumluluk, sağlıklı sınırlar ve öznellik üzerine dört yeni diyalog eklendi.',
+      'Bu denemelerde insan olmak üzerine düşünüyorum.\n\nÖlümün farkında olmak nasıl yaşadığımızı değiştirir? Birine güvenmek, kendimizi açmak ve açıldığımız yerden yaralanmak ne anlama gelir? Kendimizi korumak için koyduğumuz sınırlar ne zaman bizi yakınlıktan uzaklaştıran duvarlara dönüşür?\n\nBaşkalarının bize yaptıklarıyla kendi sorumluluğumuzu nasıl ayırır, kendi hayatımızda yeniden söz sahibi oluruz?',
+    seoDescription: 'Ölüm, anlam arayışı, dostluk, güven ve sağlıklı sınırlar üzerine diyalog biçiminde denemeler.',
     hubPath: '/denemeler',
     inLanguage: 'tr',
   },

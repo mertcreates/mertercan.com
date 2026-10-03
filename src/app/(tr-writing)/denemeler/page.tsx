@@ -48,7 +48,13 @@ export default function Denemeler() {
 
         <header className='max-w-[620px]'>
           <h1 className='mb-3'>{series.title}</h1>
-          <p className='text-ink/70 mt-0! max-w-[58ch]'>{series.description}</p>
+          <div className='max-w-[58ch] space-y-5'>
+            {series.description.split('\n\n').map((paragraph) => (
+              <p key={paragraph} className='text-ink/70 mt-0!'>
+                {paragraph}
+              </p>
+            ))}
+          </div>
           <Link href={firstEssayHref} className='text-ink hover:text-ink/70 mt-6 inline-block text-sm no-underline'>
             İlk denemeden başla →
           </Link>

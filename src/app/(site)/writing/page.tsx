@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import ArenaStoryIndex from '@/app/components/ArenaStoryIndex';
 import Footer from '@/app/components/Footer';
 import WritingSectionNav from '@/app/components/WritingSectionNav';
 import { buildWritingJsonLd, siteName, siteUrl } from '@/lib/seo';
@@ -13,7 +12,7 @@ const denemelerSeries = getWritingSeries('denemeler');
 const poems = getPoemWritings();
 const talks = getArticleWritings();
 const writingJsonLd = buildWritingJsonLd({
-  entries: [...denemelerSeries.entries, ...arenaSeries.entries, ...poems, ...talks],
+  entries: [...denemelerSeries.entries, ...poems, ...talks],
   description,
   series: [denemelerSeries, arenaSeries],
 });
@@ -48,7 +47,8 @@ export default function Writing() {
       <section className='writing-content container-base pt-14 pb-24 md:pt-20 md:pb-[150px]'>
         <h1 className='mb-3'>Writing</h1>
         <p lang='en' className='text-ink/70 mt-0! mb-8 max-w-[620px] text-sm! italic md:mb-10'>
-          Notes, poems, essays, stories, and small conversations I want to keep somewhere quieter than the feed.
+          I write about what it means to be human and how we choose to live. Here you&apos;ll find my essays, short
+          stories, poetry, and a talk on leadership.
         </p>
 
         <WritingSectionNav />
@@ -59,9 +59,13 @@ export default function Writing() {
               {denemelerSeries.title}
             </Link>
           </h2>
-          <p lang='tr' className='text-ink/70 mb-12 max-w-[58ch] md:mb-14'>
-            {denemelerSeries.description}
-          </p>
+          <div className='mb-12 max-w-[58ch] space-y-5 md:mb-14'>
+            {denemelerSeries.description.split('\n\n').map((paragraph) => (
+              <p key={paragraph} className='text-ink/70'>
+                {paragraph}
+              </p>
+            ))}
+          </div>
 
           <div className='space-y-7 md:space-y-8'>
             {denemelerSeries.entries.map((essay) => (
@@ -91,9 +95,10 @@ export default function Writing() {
               {arenaSeries.title}
             </Link>
           </h2>
-          <p className='text-ink/70 mb-8 max-w-[58ch]'>{arenaSeries.description}</p>
-
-          <ArenaStoryIndex stories={arenaSeries.entries} headingLevel='h3' />
+          <p className='text-ink/70 mb-6 max-w-[58ch]'>{arenaSeries.description}</p>
+          <Link href={arenaSeries.hubPath} className='text-ink/70 hover:text-ink text-sm'>
+            {arenaSeries.entries.length} hikâye · Seriye git →
+          </Link>
         </section>
 
         <section

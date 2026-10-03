@@ -90,7 +90,7 @@ a:hover {
 }
 
 .siteHeaderLink {
-  @apply text-ink/70 decoration-ink/20 transition-colors hover:text-ink/85 focus-visible:text-ink/85;
+  @apply text-ink/70 decoration-ink/20 py-2 transition-colors hover:text-ink/85 focus-visible:text-ink/85;
 }
 
 .siteHeaderLink.is-current {
