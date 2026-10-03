@@ -191,6 +191,17 @@ section[id]:target > h2 {
   @apply mt-5;
 }
 
+.writing-story hr {
+  @apply text-ink/40 my-12 border-0 text-center text-sm leading-none md:my-16;
+  height: auto;
+  overflow: visible;
+}
+
+.writing-story hr::before {
+  content: '* * *';
+  letter-spacing: 0.5em;
+}
+
 .writing-story .story-illustration {
   @apply my-10 flex justify-center md:my-12;
 }
