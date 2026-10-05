@@ -279,12 +279,12 @@ export const projects = [
     slug: 'eslint-mv3',
     title: 'eslint-plugin-mv3',
     context:
-      'An ESLint plugin that catches outer-scope references inside Manifest V3 `executeScript` functions before runtime.',
+      'An ESLint plugin for checking Manifest V3 script injection: outer-scope references, invalid options, and argument transfer problems.',
     metaDescription:
-      'eslint-plugin-mv3 is an ESLint plugin by Mert Ercan for catching Manifest V3 `executeScript` closure traps before runtime.',
+      'eslint-plugin-mv3 is an ESLint plugin by Mert Ercan that checks Manifest V3 executeScript calls for closure errors, invalid options, and argument transfer problems.',
     year: '2026',
-    updatedAt: '2026-02-16',
-    pageReviewedAt: '2026-09-20',
+    updatedAt: '2026-10-04',
+    pageReviewedAt: '2026-10-05',
     type: 'Open source tool',
     status: 'live',
     schemaType: 'SoftwareSourceCode',
@@ -292,17 +292,20 @@ export const projects = [
     kind: 'tool',
     story: [
       'Manifest V3 has a small trap that is easy to miss: a function passed to `scripting.executeScript` is serialized before it runs. Values from the outer scope do not come with it.',
-      'I wrote the plugin to make that boundary visible before runtime. It rejects injected functions that depend on outer-scope values, requires parameters to travel through `args`, and keeps the call shape statically analyzable.',
-      'It is a small tool for one sharp edge: not to make extension development feel clever, but to make a fragile runtime boundary easier to trust.',
+      'I wrote the plugin to catch those references while linting. Its recommended configuration checks the injected function and how it receives its inputs. Separate rules check injection options and values that Chrome or Firefox reject or change when passing arguments to the page.',
+      'The checks follow what the source code can establish. They can point to a callback that disappears from an argument or a method that cannot run as a standalone function. They cannot prove every runtime value is safe. An optional rule also reports MAIN-world injection for projects that require code to stay in the isolated world.',
     ],
     howItWorks: [
-      'The rule resolves the function passed to `chrome.scripting.executeScript` or `browser.scripting.executeScript` and verifies that it is local and self-contained.',
-      'Outer-scope captures and imported function references are rejected because those values do not survive function serialization.',
-      'Parameters must travel through a statically readable `args` array; dynamic call shapes that cannot be verified are rejected explicitly.',
+      'The rules recognize chrome.scripting.executeScript and browser.scripting.executeScript, including local aliases, known computed properties, and calls through call, apply, bind, or Reflect.apply.',
+      'The recommended configuration enables no-execute-script-closure. It reports outer-scope captures, imported functions whose bodies it cannot inspect, missing or unreadable args for functions with parameters, and call shapes it cannot resolve.',
+      'The opt-in valid-execute-script-options rule checks required fields, types, and conflicting options. It also reports method shorthand that cannot be reconstructed as a standalone function and generators whose bodies would not run.',
+      'The opt-in no-execute-script-argument-loss rule identifies values that browsers reject or alter during transfer, including callbacks, circular references, and built-in objects such as Date, Map, and typed arrays. Reports include the path to the affected value.',
+      'The opt-in no-main-world rule reports a known world: MAIN setting. MAIN is supported by the browsers; this rule is for projects that choose to require isolation.',
+      'The options and argument-transfer rules report problems they can establish from the source. Unknown runtime values and cross-file behavior remain outside their analysis.',
     ],
     facts: [
-      'The published package is version 1.0.0 and supports ESLint versions from 8.50.0 up to, but not including, 10.',
-      'The documented benchmark measured a 2.96 ms median net rule cost on a 4,999-line baseline and 16.19 ms on a 30,006-line mixed worst-case fixture.',
+      'Version 1.2.0 was published on 4 October 2026. It supports ESLint >=8.50.0 <11, including ESLint 10, which requires flat config.',
+      'The 4 October benchmark measured all four rules together: median added lint time was 10.55 ms on a 4,999-line file without injection calls and 43.80 ms on a 30,006-line mixed worst-case fixture, using an Apple M2 and ESLint 9.39.2. These are fixture measurements, not a performance guarantee.',
     ],
     links: [
       {
@@ -314,6 +317,11 @@ export const projects = [
         kind: 'github',
         label: 'source repository',
         href: 'https://github.com/mertcreates/eslint-plugin-mv3',
+      },
+      {
+        kind: 'release',
+        label: 'version 1.2.0 release notes',
+        href: 'https://github.com/mertcreates/eslint-plugin-mv3/releases/tag/v1.2.0',
       },
       {
         kind: 'benchmark',
