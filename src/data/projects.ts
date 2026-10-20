@@ -74,7 +74,7 @@ export const projects = [
     year: '2026',
     publishedAt: '2026-07-04',
     updatedAt: '2026-10-03',
-    pageReviewedAt: '2026-10-03',
+    pageReviewedAt: '2026-10-20',
     type: 'Writing and export tool',
     status: 'live',
     schemaType: 'WebApplication',
@@ -91,6 +91,29 @@ export const projects = [
       'Optional formatting suggestions tidy spacing and dialogue layout. Writers review the proposed changes and choose which ones to apply to the source text.',
       'The download menu exports one page, selected pages, or the whole document as PNG images or a PDF. Multiple PNG images come in a ZIP file.',
       'The workspace stays in the same browser on the same device. Clearing browser data removes the saved copy, so important writing still needs a separate backup.',
+    ],
+    visuals: [
+      {
+        src: '/images/projects/dizgi-landing.webp',
+        alt: 'The Dizgi landing page introducing the tool, with a preview of writing arranged across pages.',
+        width: 1600,
+        height: 877,
+        caption: 'An introduction to turning writing into shareable visual pages.',
+      },
+      {
+        src: '/images/projects/dizgi-editor.webp',
+        alt: 'The Dizgi editor with source text, a paginated preview, and page format and typography controls.',
+        width: 1600,
+        height: 877,
+        caption: 'Writing, page preview, and layout controls in one workspace.',
+      },
+      {
+        src: '/images/projects/dizgi-writing.webp',
+        alt: 'Dizgi writing mode with a focused text area, formatting tools, a page break marker, and word and page counts.',
+        width: 1600,
+        height: 877,
+        caption: 'A focused writing mode with formatting and manual page breaks.',
+      },
     ],
     links: [
       { kind: 'website', label: 'official product site', href: 'https://dizgi.app' },
