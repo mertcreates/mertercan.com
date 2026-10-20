@@ -12,6 +12,7 @@ const arenaSeries = getWritingSeries('arena');
 const selectedProjects = [
   { slug: 'bugjar' },
   { slug: 'dizgi' },
+  { slug: 'pofis' },
   { slug: 'steam-library-manager', showYear: true },
   { slug: 'haklisin' },
   { slug: 'kombin' },

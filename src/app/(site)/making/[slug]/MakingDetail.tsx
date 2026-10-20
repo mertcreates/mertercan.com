@@ -89,23 +89,28 @@ export default function MakingDetail({ project }: Props) {
         </section>
       )}
 
-      {/* Visual frame — optional */}
-      {project.visual && (
-        <figure className='mb-14 max-w-[720px] md:mb-16'>
-          <div className='border-ink/8 bg-ink/3 relative aspect-[16/10] w-full overflow-hidden rounded-sm border'>
+      {project.visuals?.map((visual) => (
+        <figure key={visual.src} className='mb-14 max-w-[720px] md:mb-16'>
+          <a
+            href={visual.src}
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label={`View full-size image: ${visual.alt}`}
+            className='border-ink/8 bg-ink/3 block overflow-hidden rounded-sm border'
+          >
             <Image
-              src={project.visual.src}
-              alt={project.visual.alt}
-              fill
-              className='object-cover object-top'
+              src={visual.src}
+              alt={visual.alt}
+              width={visual.width}
+              height={visual.height}
+              unoptimized
+              className='h-auto w-full'
               sizes='(max-width: 768px) 100vw, 720px'
             />
-          </div>
-          {project.visual.caption && (
-            <figcaption className='text-ink/70 mt-3 text-xs italic'>{project.visual.caption}</figcaption>
-          )}
+          </a>
+          {visual.caption && <figcaption className='text-ink/70 mt-3 text-xs italic'>{visual.caption}</figcaption>}
         </figure>
-      )}
+      ))}
 
       {/* Official sources — optional */}
       {project.links && project.links.length > 0 && (

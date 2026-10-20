@@ -19,11 +19,13 @@ export type Project = {
   group: 'larger' | 'small';
   kind: ProjectKind;
   story: string[];
-  visual?: {
+  visuals?: {
     src: string;
     alt: string;
+    width: number;
+    height: number;
     caption?: string;
-  };
+  }[];
   howItWorks: string[];
   facts?: string[];
   links?: {
@@ -95,6 +97,55 @@ export const projects = [
       { kind: 'website', label: 'open the editor', href: 'https://dizgi.app/editor' },
     ],
     tags: ['writing', 'pagination', 'typography'],
+  },
+  {
+    slug: 'pofis',
+    title: 'Pofis',
+    homeSummary: 'A work-hours tool born from manually adding up turnstile records each week, with Pofi for company.',
+    context:
+      'An internal tool that turns turnstile records into a clear view of a 40-hour working week, with a small companion named Pofi.',
+    metaDescription:
+      'Pofis is an internal work-hours tool by Mert Ercan for tracking PDKS records and planning a 40-hour week, available on the web, Windows, and macOS.',
+    year: '2026',
+    updatedAt: '2026-10-20',
+    pageReviewedAt: '2026-10-20',
+    type: 'Internal work-hours tool',
+    status: 'live',
+    schemaType: 'SoftwareApplication',
+    group: 'larger',
+    kind: 'tool',
+    story: [
+      'Pofis began with a calculation I kept having to do: adding up turnstile entries and exits to see where I stood in a 40-hour working week. I wanted that answer to be easier to find through the day.',
+      'It reads my attendance records through PDKS, the workplace attendance system, and brings daily hours, weekly totals, and a personal work plan into one view. Recorded time and the estimate for an ongoing day stay visibly separate. Missing or unclear records keep their uncertainty on screen.',
+      'Pofi gives the tool a character of its own: a small cat with an employee badge, a room, an album, and notes to return to. The interface keeps the numbers clear, while Pofi adds a little warmth to an otherwise routine part of the working day.',
+      'Pofis is live as an internal tool on the web, Windows, and macOS. The desktop versions bring the same application into a dedicated window, with a weekly plan that can be adjusted around the days ahead.',
+    ],
+    howItWorks: [
+      'The user signs in with their own PDKS account to view their personal entry and exit records.',
+      'Recorded time runs from the first entry to the last exit of the day; breaks between those records are included. An ongoing day can also show a separate live estimate.',
+      'A personal weekly plan starts at 40 hours across Monday to Friday. Daily targets and planned days off can be adjusted without changing the source attendance records.',
+      'Daily details and previous weeks keep the underlying movements available alongside the summaries. Ambiguous records are explained with their causes and times.',
+      'Pofi has changing illustrations, a room, an album, and daily notes within the same application.',
+      'Desktop versions are available for Windows x64 and macOS on Apple Silicon and Intel. At startup, the app checks for a newer version and offers to copy the installation command, which the user runs to update.',
+    ],
+    visuals: [
+      {
+        src: '/images/projects/pofis-dashboard.webp',
+        alt: 'Pofis showing daily hours, a 40-hour weekly target, the entry and exit report, and Pofi.',
+        width: 1920,
+        height: 1208,
+        caption: 'Daily hours, the weekly total, and the attendance report, with Pofi alongside.',
+      },
+      {
+        src: '/images/projects/pofis-login.webp',
+        alt: 'The Pofis sign-in screen, with Pofi beside the PDKS username and password form.',
+        width: 1280,
+        height: 877,
+        caption: 'Pofi welcomes the user beside the PDKS sign-in form.',
+      },
+    ],
+    links: [{ kind: 'website', label: 'official product site', href: 'https://pofis.app' }],
+    tags: ['work hours', 'internal tool', 'character design'],
   },
   {
     slug: 'haklisin',

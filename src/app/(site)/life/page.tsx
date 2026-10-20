@@ -66,6 +66,10 @@ const entries: Entry[] = [
         text: 'Added 17 stories to Arena, from XLIX to LXV.',
         relatedLink: { href: arenaSeries.hubPath, label: arenaSeries.title },
       },
+      {
+        text: 'Added Pofis to Making, an internal work-hours tool available on the web, Windows, and macOS.',
+        relatedLink: { href: '/making/pofis', label: 'Pofis' },
+      },
     ],
   },
   {
