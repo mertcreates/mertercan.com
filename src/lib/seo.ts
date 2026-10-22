@@ -21,6 +21,7 @@ export const socialLinks = [
   'https://www.pinterest.com/mertcreates',
   'https://github.com/mertcreates',
   'https://www.linkedin.com/in/mert-ercan',
+  'https://www.threads.com/@_mertercan',
   'https://x.com/Mert_Ercan',
 ];
 

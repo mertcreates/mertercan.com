@@ -22,8 +22,8 @@ const Footer = () => {
             LinkedIn
           </a>
 
-          <a className='shrink-0' href='https://x.com/Mert_Ercan' target='_blank' rel='noopener noreferrer'>
-            X
+          <a className='shrink-0' href='https://www.threads.com/@_mertercan' target='_blank' rel='noopener noreferrer'>
+            Threads
           </a>
 
           <a
