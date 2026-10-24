@@ -130,8 +130,8 @@ export const projects = [
     metaDescription:
       'Pofis is an internal work-hours tool by Mert Ercan for tracking PDKS records, planning the week, and setting exit reminders. Available on the web, Windows, macOS, and Ubuntu.',
     year: '2026',
-    updatedAt: '2026-10-23',
-    pageReviewedAt: '2026-10-23',
+    updatedAt: '2026-10-24',
+    pageReviewedAt: '2026-10-24',
     type: 'Internal work-hours tool',
     status: 'live',
     schemaType: 'SoftwareApplication',
@@ -141,6 +141,7 @@ export const projects = [
       'Pofis began with a calculation I kept having to do: adding up turnstile entries and exits to see where I stood in a 40-hour working week. I wanted to know when I could leave without doing the sums again.',
       'It reads my attendance records through PDKS, the workplace attendance system. The daily view shows the first entry and target exit, with the weekly total nearby. Recorded time and the estimate for an ongoing day stay separate. Missing or unclear records are marked in the report.',
       'The weekly plan lets me work out the days ahead. I can change daily hours, mark a day off, or choose an arrival time to see when I would leave. I can also work backwards from a departure time. The desktop app can remind me before the exit target and when I reach it, through a system notification or my own Telegram bot.',
+      'Pofi Mini keeps the same numbers close by in a small desktop panel. I can check the exit target without opening the main window, or pin the panel while doing something else. On macOS, the time remaining can sit in the menu bar.',
       'Pofi is a small cat with an employee badge. There is a room to visit, an album, and a notebook with daily stories. Pofi has a fictional working day of its own, too. The workplace meal menu comes with a short Pofi comment about the food.',
     ],
     howItWorks: [
@@ -150,6 +151,7 @@ export const projects = [
       'The time planner works in either direction: arrival time plus the required hours gives a departure time, or a chosen departure time gives an arrival time. Choices are saved for that day and week. They are planning scenarios; the live exit target and reminders use the actual PDKS records.',
       'The weekly timeline opens past days in the entry and exit report, and today or future days in the plan. Record warnings link to the relevant details.',
       'Desktop and Telegram reminders are optional and off by default. The desktop app keeps running when its window is closed. Users choose how far ahead of the exit target to be reminded and connect their own bot for Telegram messages.',
+      'Pofi Mini opens from the desktop menu bar or system tray, or with Command/Ctrl+Shift+P. It shows daily hours, the exit target and time remaining, and the weekly total. The panel can be pinned open; macOS also has an optional menu bar countdown.',
       'Signed-in users can browse the workplace meal menu by date, with a Pofi comment about the selected menu. Pofi also has a room, an album, and daily notebook stories.',
       'Pofis is available as an internal tool on the web and as a desktop app for Windows x64, macOS on Apple Silicon or Intel, and Ubuntu 24.04 LTS x64. The desktop app checks for updates at startup; users copy and run the installation command to update.',
     ],
